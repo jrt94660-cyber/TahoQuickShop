@@ -4,7 +4,7 @@ main: com.taho.quickshop.TahoQuickShop
 api-version: '1.21'
 author: Taho
 description: Configurable GUI shop plugin with Vault economy support.
-softdepend: [Vault, PlayerPoints, ExcellentEconomy]
+softdepend: [Vault, CoinsEngine, PlayerPoints, ExcellentEconomy]
 commands:
   shop:
     description: Opens the TahoQuickShop GUI.
