@@ -308,7 +308,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         if (category == null || item == null) return;
 
         double price = item.getDouble("price", -1);
-        int amount = Math.max(1, Math.min(64, item.getInt("amount", 1));
+        int amount = Math.max(1, Math.min(64, item.getInt("amount", 1)));
         if (price < 0 || !Double.isFinite(price)) { message(player, "purchase-failed"); return; }
 
         String provider = category.getString("economy", "vault").trim().toLowerCase(Locale.ROOT);
