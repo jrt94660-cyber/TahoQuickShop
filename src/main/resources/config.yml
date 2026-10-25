@@ -912,118 +912,6 @@ categories:
         amount: 1
         slot: 54
         lore: ["&fBuy Price: &#0bf52b$%price%"]
-      coal-ore:
-        material: COAL_ORE
-        name: "&fCoal Ore"
-        price: 12
-        amount: 1
-        slot: 55
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-coal-ore:
-        material: DEEPSLATE_COAL_ORE
-        name: "&fDeepslate Coal Ore"
-        price: 14
-        amount: 1
-        slot: 56
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      iron-ore:
-        material: IRON_ORE
-        name: "&fIron Ore"
-        price: 18
-        amount: 1
-        slot: 57
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-iron-ore:
-        material: DEEPSLATE_IRON_ORE
-        name: "&fDeepslate Iron Ore"
-        price: 20
-        amount: 1
-        slot: 58
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      copper-ore:
-        material: COPPER_ORE
-        name: "&fCopper Ore"
-        price: 15
-        amount: 1
-        slot: 59
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-copper-ore:
-        material: DEEPSLATE_COPPER_ORE
-        name: "&fDeepslate Copper Ore"
-        price: 17
-        amount: 1
-        slot: 60
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      gold-ore:
-        material: GOLD_ORE
-        name: "&fGold Ore"
-        price: 25
-        amount: 1
-        slot: 61
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-gold-ore:
-        material: DEEPSLATE_GOLD_ORE
-        name: "&fDeepslate Gold Ore"
-        price: 28
-        amount: 1
-        slot: 62
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      redstone-ore:
-        material: REDSTONE_ORE
-        name: "&fRedstone Ore"
-        price: 20
-        amount: 1
-        slot: 63
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-redstone-ore:
-        material: DEEPSLATE_REDSTONE_ORE
-        name: "&fDeepslate Redstone Ore"
-        price: 22
-        amount: 1
-        slot: 64
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      lapis-ore:
-        material: LAPIS_ORE
-        name: "&fLapis Lazuli Ore"
-        price: 22
-        amount: 1
-        slot: 65
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-lapis-ore:
-        material: DEEPSLATE_LAPIS_ORE
-        name: "&fDeepslate Lapis Lazuli Ore"
-        price: 24
-        amount: 1
-        slot: 66
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      diamond-ore:
-        material: DIAMOND_ORE
-        name: "&fDiamond Ore"
-        price: 120
-        amount: 1
-        slot: 67
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-diamond-ore:
-        material: DEEPSLATE_DIAMOND_ORE
-        name: "&fDeepslate Diamond Ore"
-        price: 130
-        amount: 1
-        slot: 68
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      emerald-ore:
-        material: EMERALD_ORE
-        name: "&fEmerald Ore"
-        price: 150
-        amount: 1
-        slot: 69
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      deepslate-emerald-ore:
-        material: DEEPSLATE_EMERALD_ORE
-        name: "&fDeepslate Emerald Ore"
-        price: 160
-        amount: 1
-        slot: 70
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
       amethyst-block:
         material: AMETHYST_BLOCK
         name: "&fBlock of Amethyst"
@@ -1345,13 +1233,6 @@ categories:
         price: 8
         amount: 1
         slot: 116
-        lore: ["&fBuy Price: &#0bf52b$%price%"]
-      spore-blossom:
-        material: SPORE_BLOSSOM
-        name: "&fSpore Blossom"
-        price: 15
-        amount: 1
-        slot: 117
         lore: ["&fBuy Price: &#0bf52b$%price%"]
       flowering-azalea-leaves:
         material: FLOWERING_AZALEA_LEAVES
