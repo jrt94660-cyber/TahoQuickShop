@@ -72,6 +72,27 @@ categories:
         amount: 1
         slot: 14
         lore: ["&fBuy Price: &#0bf52b$%price%"]
+      popped-chorus-fruit:
+        material: POPPED_CHORUS_FRUIT
+        name: "&fPopped Chorus Fruit"
+        price: 15
+        amount: 1
+        slot: 15
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      shulker-shell:
+        material: SHULKER_SHELL
+        name: "&fShulker Shell"
+        price: 350
+        amount: 1
+        slot: 16
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      shulker-box:
+        material: SHULKER_BOX
+        name: "&fShulker Box"
+        price: 800
+        amount: 1
+        slot: 17
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
   nether:
     title: "&8Shop - Nether"
     name: "&#0bf592Nether"
@@ -106,6 +127,41 @@ categories:
         price: 350
         amount: 1
         slot: 12
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      nether-quartz:
+        material: NETHER_QUARTZ_ORE
+        name: "&fNether Quartz"
+        price: 15
+        amount: 1
+        slot: 13
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      soul-sand:
+        material: SOUL_SAND
+        name: "&fSoul Sand"
+        price: 15
+        amount: 1
+        slot: 14
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      magma-block:
+        material: MAGMA_BLOCK
+        name: "&fMagma Block"
+        price: 35
+        amount: 1
+        slot: 15
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      crying-obsidian:
+        material: CRYING_OBSIDIAN
+        name: "&fCrying Obsidian"
+        price: 150
+        amount: 1
+        slot: 16
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      nether-wart:
+        material: NETHER_WART
+        name: "&fNether Wart"
+        price: 20
+        amount: 1
+        slot: 17
         lore: ["&fBuy Price: &#0bf52b$%price%"]
   gear:
     title: "&8Shop - Gear"
@@ -162,6 +218,20 @@ categories:
         price: 250
         amount: 1
         slot: 15
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      bottle-enchanting:
+        material: EXPERIENCE_BOTTLE
+        name: "&fBottle o' Enchanting"
+        price: 100
+        amount: 1
+        slot: 16
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      arrow:
+        material: ARROW
+        name: "&fArrow"
+        price: 500
+        amount: 1
+        slot: 17
         lore: ["&fBuy Price: &#0bf52b$%price%"]
   food:
     title: "&8Shop - Food"
@@ -225,6 +295,13 @@ categories:
         price: 65
         amount: 1
         slot: 16
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      food-golden-apple:
+        material: GOLDEN_APPLE
+        name: "&fGolden Apple"
+        price: 250
+        amount: 1
+        slot: 17
         lore: ["&fBuy Price: &#0bf52b$%price%"]
   redstone:
     title: "&8Shop - Redstone"
@@ -1543,7 +1620,7 @@ categories:
         amount: 1
         slot: 2
         lore: ["&fBuy Price: &#a303f9$%price% Shards"]
-        command: "dc givekey %player% Common %amount%"
+        command: "crate givekey %player% common %amount%"
       prime-key:
         material: TRIPWIRE_HOOK
         name: "&#2386d3Prime Key"
@@ -1551,7 +1628,7 @@ categories:
         amount: 1
         slot: 3
         lore: ["&fBuy Price: &#a303f9%price% Shards"]
-        command: "dc givekey %player% Prime %amount%"
+        command: "crate givekey %player% prime %amount%"
       gold-key:
         material: TRIPWIRE_HOOK
         name: "&#e3b900Gold Key"
@@ -1559,7 +1636,7 @@ categories:
         amount: 1
         slot: 4
         lore: ["&fBuy Price: &#a303f9%price% Shards"]
-        command: "dc givekey %player% Gold %amount%"
+        command: "crate givekey %player% gold %amount%"
       amethyst-key:
         material: TRIPWIRE_HOOK
         name: "&#9966CCAmethyst Key"
@@ -1567,7 +1644,7 @@ categories:
         amount: 1
         slot: 5
         lore: ["&fBuy Price: &#a303f9%price% Shards"]
-        command: "dc givekey %player% Amethyst %amount%"
+        command: "crate givekey %player% amethyst %amount%"
       crimson-key:
         material: TRIPWIRE_HOOK
         name: "&#c42119Crimson Key"
@@ -1575,7 +1652,7 @@ categories:
         amount: 1
         slot: 6
         lore: ["&fBuy Price: &#a303f9%price% Shards"]
-        command: "dc givekey %player% Crimson %amount%"
+        command: "crate givekey %player% crimson %amount%"
       pig-spawner:
         material: SPAWNER
         name: "&dSpawner"
@@ -1583,7 +1660,7 @@ categories:
         amount: 1
         slot: 9
         lore: ["&ePig", "&fBuy Price: &#a303f9%price% Shards"]
-        command: "ds give %player% pig %amount%"
+        command: "ss give %player% pig %amount%"
       cow-spawner:
         material: SPAWNER
         name: "&dSpawner"
@@ -1591,4 +1668,60 @@ categories:
         amount: 1
         slot: 10
         lore: ["&eCow", "&fBuy Price: &#a303f9%price% Shards"]
-        command: "ds give %player% cow %amount%"
+        command: "ss give %player% cow %amount%"
+      zombie-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 400
+        amount: 1
+        slot: 11
+        lore: ["&eZombie", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% zombie %amount%"
+      spider-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 750
+        amount: 1
+        slot: 12
+        lore: ["&eSpider", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% spider %amount%"
+      skeleton-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 500
+        amount: 1
+        slot: 13
+        lore: ["&eSkeleton", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% skeleton %amount%"
+      creeper-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 625
+        amount: 1
+        slot: 14
+        lore: ["&eCreeper", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% creeper %amount%"
+      zombified-piglin-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 750
+        amount: 1
+        slot: 15
+        lore: ["&eZombified Piglin", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% zombie_piglin %amount%"
+      blaze-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 1000
+        amount: 1
+        slot: 16
+        lore: ["&eBlaze", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% blaze %amount%"
+      iron-golem-spawner:
+        material: SPAWNER
+        name: "&dSpawner"
+        price: 1500
+        amount: 1
+        slot: 17
+        lore: ["&eIron Golem", "&fBuy Price: &#a303f9%price% Shards"]
+        command: "ss give %player% iron_golem %amount%"
