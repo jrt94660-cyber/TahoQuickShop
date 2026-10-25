@@ -1,0 +1,70 @@
+nether:
+  title: "&8Shop - Nether"
+  name: "&#0bf592Nether"
+  material: MAGMA_BLOCK
+  slot: 12
+  rows: 3
+  items:
+    blaze-rod:
+      material: BLAZE_ROD
+      name: "&fBlaze Rod"
+      price: 150
+      amount: 1
+      slot: 9
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    glowstone-dust:
+      material: GLOWSTONE_DUST
+      name: "&fGlowstone Dust"
+      price: 15
+      amount: 1
+      slot: 10
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    magma-cream:
+      material: MAGMA_CREAM
+      name: "&fMagma Cream"
+      price: 15
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    ghast-tear:
+      material: GHAST_TEAR
+      name: "&fGhast Tear"
+      price: 350
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    nether-quartz:
+      material: NETHER_QUARTZ_ORE
+      name: "&fNether Quartz"
+      price: 15
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    soul-sand:
+      material: SOUL_SAND
+      name: "&fSoul Sand"
+      price: 15
+      amount: 1
+      slot: 14
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    magma-block:
+      material: MAGMA_BLOCK
+      name: "&fMagma Block"
+      price: 35
+      amount: 1
+      slot: 15
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    crying-obsidian:
+      material: CRYING_OBSIDIAN
+      name: "&fCrying Obsidian"
+      price: 150
+      amount: 1
+      slot: 16
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    nether-wart:
+      material: NETHER_WART
+      name: "&fNether Wart"
+      price: 20
+      amount: 1
+      slot: 17
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
