@@ -272,24 +272,41 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         Inventory inventory = Bukkit.createInventory(new ShopHolder(parts[0], 0, itemRef, amount), 27, color("&8Select Amount"));
         fill(inventory);
         Material itemMaterial = material(item.getString("material"), Material.STONE);
+        boolean noAmount = isNoAmountItem(itemMaterial);
         int largeStep = itemMaterial.getMaxStackSize() <= 16 ? 16 : 64;
-        addActionItem(inventory, 9, Material.RED_CONCRETE, "&c-" + largeStep, "qty:remove:" + largeStep);
-        addActionItem(inventory, 10, Material.RED_CONCRETE, "&c-10", "qty:remove:10");
-        addActionItem(inventory, 11, Material.RED_CONCRETE, "&c-1", "qty:remove:1");
+        if (!noAmount) {
+            addActionItem(inventory, 9, Material.RED_CONCRETE, "&c-" + largeStep, "qty:remove:" + largeStep);
+            addActionItem(inventory, 10, Material.RED_CONCRETE, "&c-10", "qty:remove:10");
+            addActionItem(inventory, 11, Material.RED_CONCRETE, "&c-1", "qty:remove:1");
+        }
         ItemStack chosen = new ItemStack(itemMaterial, 1);
         ItemMeta chosenMeta = chosen.getItemMeta();
         if (chosenMeta != null) {
             chosenMeta.setDisplayName(color(item.getString("name", parts[1])));
-            chosenMeta.setLore(List.of(color("&7Amount: &e" + amount), color("&7Total: &a" + categoryPricePrefix(parts[0]) + format(item.getDouble("price") * amount)), color("&8Use the buttons to change amount")));
+            chosenMeta.setLore(noAmount
+                    ? List.of(color("&7Amount: &e1"), color("&7Total: &a" + categoryPricePrefix(parts[0]) + format(item.getDouble("price"))))
+                    : List.of(color("&7Amount: &e" + amount), color("&7Total: &a" + categoryPricePrefix(parts[0]) + format(item.getDouble("price") * amount)), color("&8Use the buttons to change amount")));
             chosen.setItemMeta(chosenMeta);
         }
         inventory.setItem(13, chosen);
-        addActionItem(inventory, 15, Material.LIME_CONCRETE, "&a+1", "qty:add:1");
-        addActionItem(inventory, 16, Material.LIME_CONCRETE, "&a+10", "qty:add:10");
-        addActionItem(inventory, 17, Material.LIME_CONCRETE, "&a+" + largeStep, "qty:add:" + largeStep);
+        if (!noAmount) {
+            addActionItem(inventory, 15, Material.LIME_CONCRETE, "&a+1", "qty:add:1");
+            addActionItem(inventory, 16, Material.LIME_CONCRETE, "&a+10", "qty:add:10");
+            addActionItem(inventory, 17, Material.LIME_CONCRETE, "&aSet to " + largeStep, "qty:set:" + largeStep);
+        }
         addActionItem(inventory, 18, Material.ARROW, "&cBack", "qty:back");
         addActionItem(inventory, 22, Material.EMERALD, "&aConfirm Purchase", "qty:confirm");
         player.openInventory(inventory);
+    }
+
+    private boolean isNoAmountItem(Material material) {
+        return java.util.Set.of(
+                Material.TOTEM_OF_UNDYING, Material.POTION, Material.SPLASH_POTION,
+                Material.ENCHANTED_BOOK, Material.SHULKER_BOX, Material.ELYTRA,
+                Material.BOW, Material.CROSSBOW, Material.FISHING_ROD,
+                Material.IRON_SWORD, Material.DIAMOND_SWORD, Material.STONE_PICKAXE,
+                Material.IRON_PICKAXE, Material.DIAMOND_PICKAXE, Material.SHIELD
+        ).contains(material);
     }
 
     private String categoryPricePrefix(String categoryId) {
@@ -341,6 +358,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             int amount = holder.amount;
             if (action.startsWith("qty:add:")) amount += Integer.parseInt(action.substring("qty:add:".length()));
             else if (action.startsWith("qty:remove:")) amount -= Integer.parseInt(action.substring("qty:remove:".length()));
+            else if (action.startsWith("qty:set:")) amount = Integer.parseInt(action.substring("qty:set:".length()));
             else if (action.equals("qty:confirm")) { purchase(player, holder.selectionRef, amount); return; }
             else if (action.equals("qty:back")) { openCategory(player, holder.category, holder.page); return; }
             amount = Math.max(1, Math.min(64, amount));
