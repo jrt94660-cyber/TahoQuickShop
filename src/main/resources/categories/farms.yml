@@ -1,0 +1,252 @@
+farms:
+  title: "&8Shop - Farms"
+  name: "&#55dd55Farms"
+  material: HOPPER
+  slot: 10
+  rows: 3
+  items:
+    water-bucket:
+      material: WATER_BUCKET
+      name: "&bWater Bucket"
+      price: 250
+      amount: 1
+      slot: 9
+      lore: ["&7Essential for crop and mob farms", "&fBuy Price: &#0bf52b$%price%"]
+    lava-bucket:
+      material: LAVA_BUCKET
+      name: "&6Lava Bucket"
+      price: 300
+      amount: 1
+      slot: 10
+      lore: ["&7Useful for smelters and mob farms", "&fBuy Price: &#0bf52b$%price%"]
+    hopper:
+      material: HOPPER
+      name: "&fHopper"
+      price: 350
+      amount: 1
+      slot: 11
+      lore: ["&7Collect and sort farm drops", "&fBuy Price: &#0bf52b$%price%"]
+    chest:
+      material: CHEST
+      name: "&fChest"
+      price: 100
+      amount: 1
+      slot: 12
+      lore: ["&7Store farm drops", "&fBuy Price: &#0bf52b$%price%"]
+    barrel:
+      material: BARREL
+      name: "&fBarrel"
+      price: 100
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    observer:
+      material: OBSERVER
+      name: "&fObserver"
+      price: 250
+      amount: 1
+      slot: 14
+      lore: ["&7Detect crop growth and block changes", "&fBuy Price: &#0bf52b$%price%"]
+    piston:
+      material: PISTON
+      name: "&fPiston"
+      price: 200
+      amount: 1
+      slot: 15
+      lore: ["&7Automate harvesting", "&fBuy Price: &#0bf52b$%price%"]
+    sticky-piston:
+      material: STICKY_PISTON
+      name: "&fSticky Piston"
+      price: 250
+      amount: 1
+      slot: 16
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dispenser:
+      material: DISPENSER
+      name: "&fDispenser"
+      price: 200
+      amount: 1
+      slot: 17
+      lore: ["&7Automate water, lava, and item use", "&fBuy Price: &#0bf52b$%price%"]
+    dropper:
+      material: DROPPER
+      name: "&fDropper"
+      price: 180
+      amount: 1
+      slot: 9
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    redstone-dust:
+      material: REDSTONE
+      name: "&cRedstone Dust"
+      price: 20
+      amount: 1
+      slot: 10
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    redstone-repeater:
+      material: REPEATER
+      name: "&fRedstone Repeater"
+      price: 120
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    redstone-comparator:
+      material: COMPARATOR
+      name: "&fRedstone Comparator"
+      price: 150
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    redstone-torch:
+      material: REDSTONE_TORCH
+      name: "&cRedstone Torch"
+      price: 35
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    minecart-hopper:
+      material: HOPPER_MINECART
+      name: "&fMinecart with Hopper"
+      price: 600
+      amount: 1
+      slot: 14
+      lore: ["&7For rail-based collection systems", "&fBuy Price: &#0bf52b$%price%"]
+    rail:
+      material: RAIL
+      name: "&fRail"
+      price: 20
+      amount: 1
+      slot: 15
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    powered-rail:
+      material: POWERED_RAIL
+      name: "&fPowered Rail"
+      price: 80
+      amount: 1
+      slot: 16
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    slime-block:
+      material: SLIME_BLOCK
+      name: "&aSlime Block"
+      price: 250
+      amount: 1
+      slot: 17
+      lore: ["&7For flying machines and harvesters", "&fBuy Price: &#0bf52b$%price%"]
+    bone-meal:
+      material: BONE_MEAL
+      name: "&fBone Meal"
+      price: 15
+      amount: 1
+      slot: 9
+      lore: ["&7Speed up crop growth", "&fBuy Price: &#0bf52b$%price%"]
+    wheat-seeds:
+      material: WHEAT_SEEDS
+      name: "&fWheat Seeds"
+      price: 10
+      amount: 1
+      slot: 10
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    carrot:
+      material: CARROT
+      name: "&6Carrot"
+      price: 20
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    potato:
+      material: POTATO
+      name: "&ePotato"
+      price: 20
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    beetroot-seeds:
+      material: BEETROOT_SEEDS
+      name: "&cBeetroot Seeds"
+      price: 10
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sugar-cane:
+      material: SUGAR_CANE
+      name: "&aSugar Cane"
+      price: 25
+      amount: 1
+      slot: 14
+      lore: ["&7Common automatic crop farm", "&fBuy Price: &#0bf52b$%price%"]
+    cactus:
+      material: CACTUS
+      name: "&aCactus"
+      price: 30
+      amount: 1
+      slot: 15
+      lore: ["&7Common automatic cactus farm", "&fBuy Price: &#0bf52b$%price%"]
+    bamboo:
+      material: BAMBOO
+      name: "&aBamboo"
+      price: 25
+      amount: 1
+      slot: 16
+      lore: ["&7Useful for fast-growing farms", "&fBuy Price: &#0bf52b$%price%"]
+    pumpkin-seeds:
+      material: PUMPKIN_SEEDS
+      name: "&6Pumpkin Seeds"
+      price: 20
+      amount: 1
+      slot: 17
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    melon-seeds:
+      material: MELON_SEEDS
+      name: "&aMelon Seeds"
+      price: 20
+      amount: 1
+      slot: 9
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    kelp:
+      material: KELP
+      name: "&2Kelp"
+      price: 15
+      amount: 1
+      slot: 10
+      lore: ["&7For kelp farms and fuel setups", "&fBuy Price: &#0bf52b$%price%"]
+    oak-sapling:
+      material: OAK_SAPLING
+      name: "&aOak Sapling"
+      price: 25
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cocoa-beans:
+      material: COCOA_BEANS
+      name: "&6Cocoa Beans"
+      price: 20
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    nether-wart:
+      material: NETHER_WART
+      name: "&cNether Wart"
+      price: 35
+      amount: 1
+      slot: 13
+      lore: ["&7Useful for potion ingredient farms", "&fBuy Price: &#0bf52b$%price%"]
+    pumpkin:
+      material: PUMPKIN
+      name: "&6Pumpkin"
+      price: 30
+      amount: 1
+      slot: 14
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    melon:
+      material: MELON
+      name: "&aMelon"
+      price: 30
+      amount: 1
+      slot: 15
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    composter:
+      material: COMPOSTER
+      name: "&6Composter"
+      price: 100
+      amount: 1
+      slot: 16
+      lore: ["&7Useful for crop farms and bone meal", "&fBuy Price: &#0bf52b$%price%"]
