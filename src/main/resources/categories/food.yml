@@ -1,7 +1,7 @@
 title: "&8Shop - Food"
 name: "&#0bf592Food"
 material: COOKED_BEEF
-slot: 20
+slot: 14
 rows: 3
 items:
   potato:
