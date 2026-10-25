@@ -8,8 +8,7 @@ softdepend: [Vault, PlayerPoints, ExcellentEconomy]
 commands:
   shop:
     description: Opens the TahoQuickShop GUI.
-    usage: /shop [reload]
-    permission: tahoquickshop.use
+    usage: /shop | /shop reload | /shop add <category>
 permissions:
   tahoquickshop.use:
     description: Allows opening the shop GUI.
