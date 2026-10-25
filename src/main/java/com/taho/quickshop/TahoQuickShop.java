@@ -102,7 +102,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     }
 
     private void addHeldItem(Player player, String categoryId) {
-        ConfigurationSection category = getConfig().getConfigurationSection("categories." + categoryId);
+        ConfigurationSection category = getCategoryConfig(categoryId);
         if (category == null) {
             player.sendMessage(color("&cCategory '" + categoryId + "' doesn't exist. Use a category ID from config.yml."));
             return;
@@ -267,7 +267,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void openQuantitySelector(Player player, String itemRef, int amount) {
         String[] parts = itemRef.split(":", 2);
         if (parts.length != 2) return;
-        ConfigurationSection item = getConfig().getConfigurationSection("categories." + parts[0] + ".items." + parts[1]);
+        ConfigurationSection item = getItemConfig(parts[0], parts[1]);
         if (item == null) return;
         Inventory inventory = Bukkit.createInventory(new ShopHolder(parts[0], 0, itemRef, amount), 27, color("&8Select Amount"));
         fill(inventory);
@@ -311,7 +311,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
 
     private String categoryPricePrefix(String categoryId) {
         ConfigurationSection category = getConfig().getConfigurationSection("categories." + categoryId);
-        if (category != null && category.getString("economy", "vault").equalsIgnoreCase("coinsengine")) {
+        if (category != null && (category.getString("economy", "vault").equalsIgnoreCase("coinsengine") || category.getString("economy", "vault").equalsIgnoreCase("excellenteconomy") || category.getString("economy", "vault").equalsIgnoreCase("excellent-economy"))) {
             return category.getString("currency-display", "Shards") + " ";
         }
         return "$";
