@@ -185,7 +185,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void openCategory(Player player, String id, int page) {
         ConfigurationSection category = getConfig().getConfigurationSection("categories." + id);
         if (category == null) { openMainShop(player); return; }
-        int rows = Math.max(1, Math.min(6, category.getInt("rows", 3)));
+        int rows = Math.max(2, Math.min(6, category.getInt("rows", 3)));
         Inventory inventory = Bukkit.createInventory(new ShopHolder(id, page), rows * 9,
                 color(category.getString("title", "&8Shop")));
         fill(inventory);
@@ -200,9 +200,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 String key = keys.get(i);
                 ConfigurationSection item = items.getConfigurationSection(key);
                 if (item == null) continue;
-                int configuredSlot = item.getInt("slot", -1);
-                int slot = configuredSlot >= contentStart && configuredSlot < contentEnd
-                        ? configuredSlot : contentStart + (i - start);
+                int slot = contentStart + (i - start);
                 ItemStack stack = new ItemStack(material(item.getString("material"), Material.STONE),
                         Math.max(1, Math.min(64, item.getInt("amount", 1))));
                 ItemMeta meta = stack.getItemMeta();
