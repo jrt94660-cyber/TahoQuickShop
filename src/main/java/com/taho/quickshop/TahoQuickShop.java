@@ -25,6 +25,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public final class TahoQuickShop extends JavaPlugin implements Listener, CommandExecutor {
@@ -288,43 +290,106 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void purchase(Player player, String itemRef) {
         String[] parts = itemRef.split(":", 2);
         if (parts.length != 2) return;
+        ConfigurationSection category = getConfig().getConfigurationSection("categories." + parts[0]);
         ConfigurationSection item = getConfig().getConfigurationSection("categories." + parts[0] + ".items." + parts[1]);
-        if (item == null) return;
+        if (category == null || item == null) return;
+
         double price = item.getDouble("price", -1);
         int amount = Math.max(1, Math.min(64, item.getInt("amount", 1)));
         if (price < 0 || !Double.isFinite(price)) { message(player, "purchase-failed"); return; }
+
+        String provider = category.getString("economy", "vault").trim().toLowerCase(Locale.ROOT);
+        String currency = category.getString("currency", "").trim();
+        double balance = readBalance(player, provider, currency);
+        if (Double.isNaN(balance)) { message(player, "economy-missing"); return; }
+        if (balance + 1.0E-8 < price) { message(player, "not-enough"); return; }
+
         String command = item.getString("command", "").trim();
+        ItemStack reward = null;
         if (command.isEmpty()) {
-            if (economy == null) { message(player, "economy-missing"); return; }
-            if (economy.getBalance(player) + 1.0E-8 < price) { message(player, "not-enough"); return; }
-            ItemStack reward = new ItemStack(material(item.getString("material"), Material.STONE), amount);
+            reward = new ItemStack(material(item.getString("material"), Material.STONE), amount);
             ItemMeta rewardMeta = reward.getItemMeta();
             if (rewardMeta != null) {
                 rewardMeta.setDisplayName(color(item.getString("name", parts[1])));
                 reward.setItemMeta(rewardMeta);
             }
-            if (player.getInventory().firstEmpty() == -1 && !canStack(player, reward)) { message(player, "inventory-full"); return; }
-            var response = economy.withdrawPlayer(player, price);
-            if (!response.transactionSuccess()) { message(player, "purchase-failed"); return; }
+            if (player.getInventory().firstEmpty() == -1 && !canStack(player, reward)) {
+                message(player, "inventory-full");
+                return;
+            }
+        }
+
+        if (!changeBalance(player, provider, currency, -price)) {
+            message(player, "purchase-failed");
+            return;
+        }
+
+        if (command.isEmpty()) {
             Map<Integer, ItemStack> leftover = player.getInventory().addItem(reward);
             if (!leftover.isEmpty()) {
-                economy.depositPlayer(player, price);
+                changeBalance(player, provider, currency, price);
                 message(player, "inventory-full");
                 return;
             }
         } else {
-            if (economy == null) { message(player, "economy-missing"); return; }
-            if (economy.getBalance(player) + 1.0E-8 < price) { message(player, "not-enough"); return; }
-            var response = economy.withdrawPlayer(player, price);
-            if (!response.transactionSuccess()) { message(player, "purchase-failed"); return; }
             ConsoleCommandSender console = Bukkit.getConsoleSender();
-            Bukkit.dispatchCommand(console, command.replace("%player%", player.getName()).replace("%amount%", String.valueOf(amount)));
+            boolean dispatched = Bukkit.dispatchCommand(console, command
+                    .replace("%player%", player.getName())
+                    .replace("%amount%", String.valueOf(amount)));
+            if (!dispatched) {
+                changeBalance(player, provider, currency, price);
+                message(player, "purchase-failed");
+                return;
+            }
         }
+
         String displayName = item.getString("name", parts[1]);
-        String success = getConfig().getString("settings.messages.purchase-success", "&aPurchased %amount%x %item% for $%price%.");
+        String success = category.getString("purchase-success-message",
+                getConfig().getString("settings.messages.purchase-success", "&aPurchased &e%amount%x %item% &afor &e$%price%&a."));
         player.sendMessage(color(success.replace("%amount%", String.valueOf(amount))
-                .replace("%item%", stripColor(displayName)).replace("%price%", format(price))));
+                .replace("%item%", stripColor(displayName))
+                .replace("%price%", format(price))
+                .replace("%currency%", category.getString("currency-display", "$"))));
         if (getConfig().getBoolean("settings.purchase.close-after-purchase", false)) player.closeInventory();
+    }
+
+    private double readBalance(Player player, String provider, String currency) {
+        if (!provider.equals("coinsengine")) {
+            return economy == null ? Double.NaN : economy.getBalance(player);
+        }
+        if (currency.isEmpty()) return Double.NaN;
+        try {
+            Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+            boolean exists = (boolean) api.getMethod("hasCurrency", String.class).invoke(null, currency);
+            if (!exists) {
+                getLogger().warning("CoinsEngine currency '" + currency + "' is not registered. Check the currency file name in plugins/CoinsEngine.");
+                return Double.NaN;
+            }
+            return ((Number) api.getMethod("getBalance", UUID.class, String.class)
+                    .invoke(null, player.getUniqueId(), currency)).doubleValue();
+        } catch (ReflectiveOperationException | LinkageError ex) {
+            getLogger().warning("Could not access CoinsEngine currency '" + currency + "': " + ex.getMessage());
+            return Double.NaN;
+        }
+    }
+
+    private boolean changeBalance(Player player, String provider, String currency, double amount) {
+        if (!provider.equals("coinsengine")) {
+            if (economy == null) return false;
+            if (amount < 0) return economy.withdrawPlayer(player, -amount).transactionSuccess();
+            return economy.depositPlayer(player, amount).transactionSuccess();
+        }
+        if (currency.isEmpty()) return false;
+        try {
+            Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+            String methodName = amount < 0 ? "removeBalance" : "addBalance";
+            Method method = api.getMethod(methodName, UUID.class, String.class, double.class);
+            Object result = method.invoke(null, player.getUniqueId(), currency, Math.abs(amount));
+            return result instanceof Boolean && (Boolean) result;
+        } catch (ReflectiveOperationException | LinkageError ex) {
+            getLogger().warning("Could not change CoinsEngine currency '" + currency + "': " + ex.getMessage());
+            return false;
+        }
     }
 
     private boolean canStack(Player player, ItemStack reward) {
