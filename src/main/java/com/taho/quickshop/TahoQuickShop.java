@@ -175,7 +175,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         }
         ConfigurationSection categories = getConfig().getConfigurationSection("categories");
         if (categories == null) return;
-        int rows = Math.max(1, Math.min(6, getConfig().getInt("settings.rows", 3)));
+        int rows = 3;
         Inventory inventory = Bukkit.createInventory(new ShopHolder("main", 0), rows * 9,
                 color(getConfig().getString("settings.title", "&8Shop")));
         fill(inventory);
@@ -200,16 +200,16 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void openCategory(Player player, String id, int page) {
         ConfigurationSection category = getConfig().getConfigurationSection("categories." + id);
         if (category == null) { openMainShop(player); return; }
-        int rows = Math.max(2, Math.min(6, category.getInt("rows", 3)));
-        Inventory inventory = Bukkit.createInventory(new ShopHolder(id, page), rows * 9,
+        int rows = 3;
+        Inventory inventory = Bukkit.createInventory(new ShopHolder(id, page, null, 1), rows * 9,
                 color(category.getString("title", "&8Shop")));
         fill(inventory);
         ConfigurationSection items = category.getConfigurationSection("items");
         if (items != null) {
             List<String> keys = new ArrayList<>(items.getKeys(false));
-            int contentStart = 0;
-            int contentEnd = inventory.getSize() - 9;
-            int capacity = Math.max(1, contentEnd - contentStart);
+            int contentStart = 9;
+            int contentEnd = 18;
+            int capacity = 9;
             int start = page * capacity;
             for (int i = start; i < Math.min(keys.size(), start + capacity); i++) {
                 String key = keys.get(i);
@@ -240,8 +240,8 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             backMeta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, "back");
             back.setItemMeta(backMeta);
         }
-        inventory.setItem(inventory.getSize() - 9, back);
-        if (items != null && items.getKeys(false).size() > (page + 1) * Math.max(1, inventory.getSize() - 9)) {
+        inventory.setItem(18, back);
+        if (items != null && items.getKeys(false).size() > (page + 1) * 9) {
             ItemStack next = new ItemStack(material(getConfig().getString("settings.navigation.next-material"), Material.ARROW));
             ItemMeta meta = next.getItemMeta();
             if (meta != null) {
@@ -249,7 +249,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 meta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, "next");
                 next.setItemMeta(meta);
             }
-            inventory.setItem(inventory.getSize() - 1, next);
+            inventory.setItem(26, next);
         }
         if (page > 0) {
             ItemStack previous = new ItemStack(Material.ARROW);
@@ -259,9 +259,46 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 meta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, "previous");
                 previous.setItemMeta(meta);
             }
-            inventory.setItem(inventory.getSize() - 2, previous);
+            inventory.setItem(25, previous);
         }
         player.openInventory(inventory);
+    }
+
+    private void openQuantitySelector(Player player, String itemRef, int amount) {
+        String[] parts = itemRef.split(":", 2);
+        if (parts.length != 2) return;
+        ConfigurationSection item = getConfig().getConfigurationSection("categories." + parts[0] + ".items." + parts[1]);
+        if (item == null) return;
+        Inventory inventory = Bukkit.createInventory(new ShopHolder(parts[0], 0, itemRef, amount), 27, color("&8Select Amount"));
+        fill(inventory);
+        addActionItem(inventory, 9, Material.RED_CONCRETE, "&c-64", "qty:remove:64");
+        addActionItem(inventory, 10, Material.RED_CONCRETE, "&c-10", "qty:remove:10");
+        addActionItem(inventory, 11, Material.RED_CONCRETE, "&c-1", "qty:remove:1");
+        ItemStack chosen = new ItemStack(material(item.getString("material"), Material.STONE), 1);
+        ItemMeta chosenMeta = chosen.getItemMeta();
+        if (chosenMeta != null) {
+            chosenMeta.setDisplayName(color(item.getString("name", parts[1])));
+            chosenMeta.setLore(List.of(color("&7Amount: &e" + amount), color("&7Total: &a$" + format(item.getDouble("price") * amount)), color("&8Use the buttons to change amount")));
+            chosen.setItemMeta(chosenMeta);
+        }
+        inventory.setItem(13, chosen);
+        addActionItem(inventory, 15, Material.LIME_CONCRETE, "&a+1", "qty:add:1");
+        addActionItem(inventory, 16, Material.LIME_CONCRETE, "&a+10", "qty:add:10");
+        addActionItem(inventory, 17, Material.LIME_CONCRETE, "&a+64", "qty:add:64");
+        addActionItem(inventory, 18, Material.ARROW, "&cBack", "qty:back");
+        addActionItem(inventory, 22, Material.EMERALD, "&aConfirm Purchase", "qty:confirm");
+        player.openInventory(inventory);
+    }
+
+    private void addActionItem(Inventory inventory, int slot, Material material, String name, String action) {
+        ItemStack stack = new ItemStack(material);
+        ItemMeta meta = stack.getItemMeta();
+        if (meta != null) {
+            meta.setDisplayName(color(name));
+            meta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, action);
+            stack.setItemMeta(meta);
+        }
+        inventory.setItem(slot, stack);
     }
 
     private void fill(Inventory inventory) {
@@ -297,18 +334,30 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             return;
         }
         String itemRef = pdc.get(itemKey, PersistentDataType.STRING);
-        if (itemRef != null) purchase(player, itemRef);
+        if (itemRef != null) {
+            openQuantitySelector(player, itemRef, 1);
+            return;
+        }
+        if (holder.selectionRef != null && action != null && action.startsWith("qty:")) {
+            int amount = holder.amount;
+            if (action.startsWith("qty:add:")) amount += Integer.parseInt(action.substring("qty:add:".length()));
+            else if (action.startsWith("qty:remove:")) amount -= Integer.parseInt(action.substring("qty:remove:".length()));
+            else if (action.equals("qty:confirm")) { purchase(player, holder.selectionRef, amount); return; }
+            else if (action.equals("qty:back")) { openCategory(player, holder.category, holder.page); return; }
+            amount = Math.max(1, Math.min(64, amount));
+            openQuantitySelector(player, holder.selectionRef, amount);
+        }
     }
 
-    private void purchase(Player player, String itemRef) {
+    private void purchase(Player player, String itemRef, int requestedAmount) {
         String[] parts = itemRef.split(":", 2);
         if (parts.length != 2) return;
         ConfigurationSection category = getConfig().getConfigurationSection("categories." + parts[0]);
         ConfigurationSection item = getConfig().getConfigurationSection("categories." + parts[0] + ".items." + parts[1]);
         if (category == null || item == null) return;
 
-        double price = item.getDouble("price", -1);
-        int amount = Math.max(1, Math.min(64, item.getInt("amount", 1)));
+        int amount = Math.max(1, Math.min(64, requestedAmount));
+        double price = item.getDouble("price", -1) * amount;
         if (price < 0 || !Double.isFinite(price)) { message(player, "purchase-failed"); return; }
 
         String provider = category.getString("economy", "vault").trim().toLowerCase(Locale.ROOT);
@@ -320,7 +369,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         String command = item.getString("command", "").trim();
         ItemStack reward = null;
         if (command.isEmpty()) {
-            reward = new ItemStack(material(item.getString("material"), Material.STONE), amount);
+            reward = new ItemStack(material(item.getString("material"), Material.STONE), 1);
             ItemMeta rewardMeta = reward.getItemMeta();
             if (rewardMeta != null) {
                 rewardMeta.setDisplayName(color(item.getString("name", parts[1])));
@@ -338,7 +387,17 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         }
 
         if (command.isEmpty()) {
-            Map<Integer, ItemStack> leftover = player.getInventory().addItem(reward);
+            Map<Integer, ItemStack> leftover = new java.util.HashMap<>();
+            int remaining = amount;
+            while (remaining > 0) {
+                ItemStack stack = reward.clone();
+                int stackAmount = Math.min(remaining, stack.getMaxStackSize());
+                stack.setAmount(stackAmount);
+                Map<Integer, ItemStack> addResult = player.getInventory().addItem(stack);
+                leftover.putAll(addResult);
+                if (!addResult.isEmpty()) break;
+                remaining -= stackAmount;
+            }
             if (!leftover.isEmpty()) {
                 changeBalance(player, provider, currency, price);
                 message(player, "inventory-full");
@@ -451,7 +510,12 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private static final class ShopHolder implements InventoryHolder {
         private final String category;
         private final int page;
-        private ShopHolder(String category, int page) { this.category = category; this.page = page; }
+        private final String selectionRef;
+        private final int amount;
+        private ShopHolder(String category, int page) { this(category, page, null, 1); }
+        private ShopHolder(String category, int page, String selectionRef, int amount) {
+            this.category = category; this.page = page; this.selectionRef = selectionRef; this.amount = amount;
+        }
         @Override public Inventory getInventory() { return null; }
     }
 }
