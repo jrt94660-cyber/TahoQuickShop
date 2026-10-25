@@ -1,0 +1,1009 @@
+overworld:
+  title: "&8Shop - Overworld"
+  name: "&#55cc55Overworld"
+  material: GRASS_BLOCK
+  slot: 17
+  rows: 3
+  items:
+    stone:
+      material: STONE
+      name: "&fStone"
+      price: 4
+      amount: 1
+      slot: 0
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cobblestone:
+      material: COBBLESTONE
+      name: "&fCobblestone"
+      price: 3
+      amount: 1
+      slot: 1
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mossy-cobblestone:
+      material: MOSSY_COBBLESTONE
+      name: "&fMossy Cobblestone"
+      price: 8
+      amount: 1
+      slot: 2
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    granite:
+      material: GRANITE
+      name: "&fGranite"
+      price: 5
+      amount: 1
+      slot: 3
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    diorite:
+      material: DIORITE
+      name: "&fDiorite"
+      price: 5
+      amount: 1
+      slot: 4
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    andesite:
+      material: ANDESITE
+      name: "&fAndesite"
+      price: 5
+      amount: 1
+      slot: 5
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    tuff:
+      material: TUFF
+      name: "&fTuff"
+      price: 6
+      amount: 1
+      slot: 6
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    calcite:
+      material: CALCITE
+      name: "&fCalcite"
+      price: 8
+      amount: 1
+      slot: 7
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    deepslate:
+      material: DEEPSLATE
+      name: "&fDeepslate"
+      price: 5
+      amount: 1
+      slot: 8
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cobbled-deepslate:
+      material: COBBLED_DEEPSLATE
+      name: "&fCobbled Deepslate"
+      price: 5
+      amount: 1
+      slot: 9
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    polished-deepslate:
+      material: POLISHED_DEEPSLATE
+      name: "&fPolished Deepslate"
+      price: 8
+      amount: 1
+      slot: 10
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dripstone-block:
+      material: DRIPSTONE_BLOCK
+      name: "&fDripstone Block"
+      price: 8
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    pointed-dripstone:
+      material: POINTED_DRIPSTONE
+      name: "&fPointed Dripstone"
+      price: 10
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dirt:
+      material: DIRT
+      name: "&fDirt"
+      price: 2
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    coarse-dirt:
+      material: COARSE_DIRT
+      name: "&fCoarse Dirt"
+      price: 3
+      amount: 1
+      slot: 14
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    rooted-dirt:
+      material: ROOTED_DIRT
+      name: "&fRooted Dirt"
+      price: 4
+      amount: 1
+      slot: 15
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    grass-block:
+      material: GRASS_BLOCK
+      name: "&fGrass Block"
+      price: 5
+      amount: 1
+      slot: 16
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    podzol:
+      material: PODZOL
+      name: "&fPodzol"
+      price: 6
+      amount: 1
+      slot: 17
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mycelium:
+      material: MYCELIUM
+      name: "&fMycelium"
+      price: 8
+      amount: 1
+      slot: 18
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mud:
+      material: MUD
+      name: "&fMud"
+      price: 4
+      amount: 1
+      slot: 19
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    clay:
+      material: CLAY
+      name: "&fClay"
+      price: 6
+      amount: 1
+      slot: 20
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    gravel:
+      material: GRAVEL
+      name: "&fGravel"
+      price: 3
+      amount: 1
+      slot: 21
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sand:
+      material: SAND
+      name: "&fSand"
+      price: 3
+      amount: 1
+      slot: 22
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    red-sand:
+      material: RED_SAND
+      name: "&fRed Sand"
+      price: 4
+      amount: 1
+      slot: 23
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sandstone:
+      material: SANDSTONE
+      name: "&fSandstone"
+      price: 5
+      amount: 1
+      slot: 24
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    red-sandstone:
+      material: RED_SANDSTONE
+      name: "&fRed Sandstone"
+      price: 6
+      amount: 1
+      slot: 25
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    moss-block:
+      material: MOSS_BLOCK
+      name: "&fMoss Block"
+      price: 8
+      amount: 1
+      slot: 26
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    moss-carpet:
+      material: MOSS_CARPET
+      name: "&fMoss Carpet"
+      price: 5
+      amount: 1
+      slot: 27
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    hanging-roots:
+      material: HANGING_ROOTS
+      name: "&fHanging Roots"
+      price: 5
+      amount: 1
+      slot: 28
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    azalea:
+      material: AZALEA
+      name: "&fAzalea"
+      price: 8
+      amount: 1
+      slot: 29
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    flowering-azalea:
+      material: FLOWERING_AZALEA
+      name: "&fFlowering Azalea"
+      price: 10
+      amount: 1
+      slot: 30
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    oak-log:
+      material: OAK_LOG
+      name: "&fOak Log"
+      price: 8
+      amount: 1
+      slot: 31
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    spruce-log:
+      material: SPRUCE_LOG
+      name: "&fSpruce Log"
+      price: 8
+      amount: 1
+      slot: 32
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    birch-log:
+      material: BIRCH_LOG
+      name: "&fBirch Log"
+      price: 8
+      amount: 1
+      slot: 33
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    jungle-log:
+      material: JUNGLE_LOG
+      name: "&fJungle Log"
+      price: 10
+      amount: 1
+      slot: 34
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    acacia-log:
+      material: ACACIA_LOG
+      name: "&fAcacia Log"
+      price: 8
+      amount: 1
+      slot: 35
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dark-oak-log:
+      material: DARK_OAK_LOG
+      name: "&fDark Oak Log"
+      price: 10
+      amount: 1
+      slot: 36
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mangrove-log:
+      material: MANGROVE_LOG
+      name: "&fMangrove Log"
+      price: 12
+      amount: 1
+      slot: 37
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cherry-log:
+      material: CHERRY_LOG
+      name: "&fCherry Log"
+      price: 12
+      amount: 1
+      slot: 38
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    oak-leaves:
+      material: OAK_LEAVES
+      name: "&fOak Leaves"
+      price: 4
+      amount: 1
+      slot: 39
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    spruce-leaves:
+      material: SPRUCE_LEAVES
+      name: "&fSpruce Leaves"
+      price: 4
+      amount: 1
+      slot: 40
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    birch-leaves:
+      material: BIRCH_LEAVES
+      name: "&fBirch Leaves"
+      price: 4
+      amount: 1
+      slot: 41
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    jungle-leaves:
+      material: JUNGLE_LEAVES
+      name: "&fJungle Leaves"
+      price: 5
+      amount: 1
+      slot: 42
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    acacia-leaves:
+      material: ACACIA_LEAVES
+      name: "&fAcacia Leaves"
+      price: 4
+      amount: 1
+      slot: 43
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dark-oak-leaves:
+      material: DARK_OAK_LEAVES
+      name: "&fDark Oak Leaves"
+      price: 5
+      amount: 1
+      slot: 44
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mangrove-leaves:
+      material: MANGROVE_LEAVES
+      name: "&fMangrove Leaves"
+      price: 6
+      amount: 1
+      slot: 45
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cherry-leaves:
+      material: CHERRY_LEAVES
+      name: "&fCherry Leaves"
+      price: 6
+      amount: 1
+      slot: 46
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    oak-sapling:
+      material: OAK_SAPLING
+      name: "&fOak Sapling"
+      price: 5
+      amount: 1
+      slot: 47
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    spruce-sapling:
+      material: SPRUCE_SAPLING
+      name: "&fSpruce Sapling"
+      price: 5
+      amount: 1
+      slot: 48
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    birch-sapling:
+      material: BIRCH_SAPLING
+      name: "&fBirch Sapling"
+      price: 5
+      amount: 1
+      slot: 49
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    jungle-sapling:
+      material: JUNGLE_SAPLING
+      name: "&fJungle Sapling"
+      price: 6
+      amount: 1
+      slot: 50
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    acacia-sapling:
+      material: ACACIA_SAPLING
+      name: "&fAcacia Sapling"
+      price: 5
+      amount: 1
+      slot: 51
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dark-oak-sapling:
+      material: DARK_OAK_SAPLING
+      name: "&fDark Oak Sapling"
+      price: 6
+      amount: 1
+      slot: 52
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mangrove-propagule:
+      material: MANGROVE_PROPAGULE
+      name: "&fMangrove Propagule"
+      price: 8
+      amount: 1
+      slot: 53
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cherry-sapling:
+      material: CHERRY_SAPLING
+      name: "&fCherry Sapling"
+      price: 8
+      amount: 1
+      slot: 54
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    amethyst-block:
+      material: AMETHYST_BLOCK
+      name: "&fBlock of Amethyst"
+      price: 25
+      amount: 1
+      slot: 55
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    budding-amethyst:
+      material: BUDDING_AMETHYST
+      name: "&fBudding Amethyst"
+      price: 500
+      amount: 1
+      slot: 56
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    amethyst-cluster:
+      material: AMETHYST_CLUSTER
+      name: "&fAmethyst Cluster"
+      price: 25
+      amount: 1
+      slot: 57
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    obsidian:
+      material: OBSIDIAN
+      name: "&fObsidian"
+      price: 30
+      amount: 1
+      slot: 58
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    crying-obsidian:
+      material: CRYING_OBSIDIAN
+      name: "&fCrying Obsidian"
+      price: 60
+      amount: 1
+      slot: 59
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    magma-block:
+      material: MAGMA_BLOCK
+      name: "&fMagma Block"
+      price: 12
+      amount: 1
+      slot: 60
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    ice:
+      material: ICE
+      name: "&fIce"
+      price: 8
+      amount: 1
+      slot: 61
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    packed-ice:
+      material: PACKED_ICE
+      name: "&fPacked Ice"
+      price: 15
+      amount: 1
+      slot: 62
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    blue-ice:
+      material: BLUE_ICE
+      name: "&fBlue Ice"
+      price: 35
+      amount: 1
+      slot: 63
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    snow-block:
+      material: SNOW_BLOCK
+      name: "&fSnow Block"
+      price: 4
+      amount: 1
+      slot: 64
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    powder-snow:
+      material: POWDER_SNOW
+      name: "&fPowder Snow"
+      price: 8
+      amount: 1
+      slot: 65
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    soul-sand:
+      material: SOUL_SAND
+      name: "&fSoul Sand"
+      price: 8
+      amount: 1
+      slot: 66
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    tall-grass:
+      material: TALL_GRASS
+      name: "&fTall Grass"
+      price: 3
+      amount: 1
+      slot: 67
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    fern:
+      material: FERN
+      name: "&fFern"
+      price: 3
+      amount: 1
+      slot: 68
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    large-fern:
+      material: LARGE_FERN
+      name: "&fLarge Fern"
+      price: 5
+      amount: 1
+      slot: 69
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-bush:
+      material: DEAD_BUSH
+      name: "&fDead Bush"
+      price: 3
+      amount: 1
+      slot: 70
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dandelion:
+      material: DANDELION
+      name: "&fDandelion"
+      price: 3
+      amount: 1
+      slot: 71
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    poppy:
+      material: POPPY
+      name: "&fPoppy"
+      price: 3
+      amount: 1
+      slot: 72
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    blue-orchid:
+      material: BLUE_ORCHID
+      name: "&fBlue Orchid"
+      price: 4
+      amount: 1
+      slot: 73
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    allium:
+      material: ALLIUM
+      name: "&fAllium"
+      price: 4
+      amount: 1
+      slot: 74
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    azure-bluet:
+      material: AZURE_BLUET
+      name: "&fAzure Bluet"
+      price: 3
+      amount: 1
+      slot: 75
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    red-tulip:
+      material: RED_TULIP
+      name: "&fRed Tulip"
+      price: 3
+      amount: 1
+      slot: 76
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    orange-tulip:
+      material: ORANGE_TULIP
+      name: "&fOrange Tulip"
+      price: 3
+      amount: 1
+      slot: 77
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    white-tulip:
+      material: WHITE_TULIP
+      name: "&fWhite Tulip"
+      price: 3
+      amount: 1
+      slot: 78
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    pink-tulip:
+      material: PINK_TULIP
+      name: "&fPink Tulip"
+      price: 3
+      amount: 1
+      slot: 79
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    oxeye-daisy:
+      material: OXEYE_DAISY
+      name: "&fOxeye Daisy"
+      price: 3
+      amount: 1
+      slot: 80
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cornflower:
+      material: CORNFLOWER
+      name: "&fCornflower"
+      price: 4
+      amount: 1
+      slot: 81
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    lily-of-the-valley:
+      material: LILY_OF_THE_VALLEY
+      name: "&fLily of the Valley"
+      price: 4
+      amount: 1
+      slot: 82
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sunflower:
+      material: SUNFLOWER
+      name: "&fSunflower"
+      price: 5
+      amount: 1
+      slot: 83
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    lilac:
+      material: LILAC
+      name: "&fLilac"
+      price: 5
+      amount: 1
+      slot: 84
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    rose-bush:
+      material: ROSE_BUSH
+      name: "&fRose Bush"
+      price: 5
+      amount: 1
+      slot: 85
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    peony:
+      material: PEONY
+      name: "&fPeony"
+      price: 5
+      amount: 1
+      slot: 86
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    lily-pad:
+      material: LILY_PAD
+      name: "&fLily Pad"
+      price: 4
+      amount: 1
+      slot: 87
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sugar-cane:
+      material: SUGAR_CANE
+      name: "&fSugar Cane"
+      price: 4
+      amount: 1
+      slot: 88
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cactus:
+      material: CACTUS
+      name: "&fCactus"
+      price: 5
+      amount: 1
+      slot: 89
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    bamboo:
+      material: BAMBOO
+      name: "&fBamboo"
+      price: 4
+      amount: 1
+      slot: 90
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    pumpkin:
+      material: PUMPKIN
+      name: "&fPumpkin"
+      price: 8
+      amount: 1
+      slot: 91
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    melon:
+      material: MELON
+      name: "&fMelon"
+      price: 8
+      amount: 1
+      slot: 92
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    brown-mushroom:
+      material: BROWN_MUSHROOM
+      name: "&fBrown Mushroom"
+      price: 4
+      amount: 1
+      slot: 93
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    red-mushroom:
+      material: RED_MUSHROOM
+      name: "&fRed Mushroom"
+      price: 4
+      amount: 1
+      slot: 94
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    brown-mushroom-block:
+      material: BROWN_MUSHROOM_BLOCK
+      name: "&fBrown Mushroom Block"
+      price: 12
+      amount: 1
+      slot: 95
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    red-mushroom-block:
+      material: RED_MUSHROOM_BLOCK
+      name: "&fRed Mushroom Block"
+      price: 12
+      amount: 1
+      slot: 96
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    mushroom-stem:
+      material: MUSHROOM_STEM
+      name: "&fMushroom Stem"
+      price: 10
+      amount: 1
+      slot: 97
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    glow-lichen:
+      material: GLOW_LICHEN
+      name: "&fGlow Lichen"
+      price: 8
+      amount: 1
+      slot: 98
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    vine:
+      material: VINE
+      name: "&fVines"
+      price: 5
+      amount: 1
+      slot: 99
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cave-vines:
+      material: CAVE_VINES
+      name: "&fCave Vines"
+      price: 8
+      amount: 1
+      slot: 100
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    flowering-azalea-leaves:
+      material: FLOWERING_AZALEA_LEAVES
+      name: "&fFlowering Azalea Leaves"
+      price: 8
+      amount: 1
+      slot: 101
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    azalea-leaves:
+      material: AZALEA_LEAVES
+      name: "&fAzalea Leaves"
+      price: 6
+      amount: 1
+      slot: 102
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    big-dripleaf:
+      material: BIG_DRIPLEAF
+      name: "&fBig Dripleaf"
+      price: 8
+      amount: 1
+      slot: 103
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    small-dripleaf:
+      material: SMALL_DRIPLEAF
+      name: "&fSmall Dripleaf"
+      price: 5
+      amount: 1
+      slot: 104
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sea-pickle:
+      material: SEA_PICKLE
+      name: "&fSea Pickle"
+      price: 5
+      amount: 1
+      slot: 105
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    seagrass:
+      material: SEAGRASS
+      name: "&fSeagrass"
+      price: 3
+      amount: 1
+      slot: 106
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    kelp:
+      material: KELP
+      name: "&fKelp"
+      price: 3
+      amount: 1
+      slot: 107
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    tube-coral-block:
+      material: TUBE_CORAL_BLOCK
+      name: "&fTube Coral Block"
+      price: 12
+      amount: 1
+      slot: 108
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    brain-coral-block:
+      material: BRAIN_CORAL_BLOCK
+      name: "&fBrain Coral Block"
+      price: 12
+      amount: 1
+      slot: 109
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    bubble-coral-block:
+      material: BUBBLE_CORAL_BLOCK
+      name: "&fBubble Coral Block"
+      price: 12
+      amount: 1
+      slot: 110
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    fire-coral-block:
+      material: FIRE_CORAL_BLOCK
+      name: "&fFire Coral Block"
+      price: 12
+      amount: 1
+      slot: 111
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    horn-coral-block:
+      material: HORN_CORAL_BLOCK
+      name: "&fHorn Coral Block"
+      price: 12
+      amount: 1
+      slot: 112
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    tube-coral:
+      material: TUBE_CORAL
+      name: "&fTube Coral"
+      price: 8
+      amount: 1
+      slot: 113
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    brain-coral:
+      material: BRAIN_CORAL
+      name: "&fBrain Coral"
+      price: 8
+      amount: 1
+      slot: 114
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    bubble-coral:
+      material: BUBBLE_CORAL
+      name: "&fBubble Coral"
+      price: 8
+      amount: 1
+      slot: 115
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    fire-coral:
+      material: FIRE_CORAL
+      name: "&fFire Coral"
+      price: 8
+      amount: 1
+      slot: 116
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    horn-coral:
+      material: HORN_CORAL
+      name: "&fHorn Coral"
+      price: 8
+      amount: 1
+      slot: 117
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-tube-coral-block:
+      material: DEAD_TUBE_CORAL_BLOCK
+      name: "&fDead Tube Coral Block"
+      price: 8
+      amount: 1
+      slot: 118
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-brain-coral-block:
+      material: DEAD_BRAIN_CORAL_BLOCK
+      name: "&fDead Brain Coral Block"
+      price: 8
+      amount: 1
+      slot: 119
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-bubble-coral-block:
+      material: DEAD_BUBBLE_CORAL_BLOCK
+      name: "&fDead Bubble Coral Block"
+      price: 8
+      amount: 1
+      slot: 120
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-fire-coral-block:
+      material: DEAD_FIRE_CORAL_BLOCK
+      name: "&fDead Fire Coral Block"
+      price: 8
+      amount: 1
+      slot: 121
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dead-horn-coral-block:
+      material: DEAD_HORN_CORAL_BLOCK
+      name: "&fDead Horn Coral Block"
+      price: 8
+      amount: 1
+      slot: 122
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sponge:
+      material: SPONGE
+      name: "&fSponge"
+      price: 80
+      amount: 1
+      slot: 123
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    wet-sponge:
+      material: WET_SPONGE
+      name: "&fWet Sponge"
+      price: 60
+      amount: 1
+      slot: 124
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    prismarine:
+      material: PRISMARINE
+      name: "&fPrismarine"
+      price: 12
+      amount: 1
+      slot: 125
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    prismarine-bricks:
+      material: PRISMARINE_BRICKS
+      name: "&fPrismarine Bricks"
+      price: 15
+      amount: 1
+      slot: 126
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    dark-prismarine:
+      material: DARK_PRISMARINE
+      name: "&fDark Prismarine"
+      price: 18
+      amount: 1
+      slot: 127
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sea-lantern:
+      material: SEA_LANTERN
+      name: "&fSea Lantern"
+      price: 25
+      amount: 1
+      slot: 128
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    turtle-egg:
+      material: TURTLE_EGG
+      name: "&fTurtle Egg"
+      price: 30
+      amount: 1
+      slot: 129
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sculk:
+      material: SCULK
+      name: "&fSculk"
+      price: 15
+      amount: 1
+      slot: 130
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sculk-vein:
+      material: SCULK_VEIN
+      name: "&fSculk Vein"
+      price: 8
+      amount: 1
+      slot: 131
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sculk-catalyst:
+      material: SCULK_CATALYST
+      name: "&fSculk Catalyst"
+      price: 100
+      amount: 1
+      slot: 132
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sculk-shrieker:
+      material: SCULK_SHRIEKER
+      name: "&fSculk Shrieker"
+      price: 150
+      amount: 1
+      slot: 133
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    bone-block:
+      material: BONE_BLOCK
+      name: "&fBone Block"
+      price: 20
+      amount: 1
+      slot: 134
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-stone:
+      material: INFESTED_STONE
+      name: "&fInfested Stone"
+      price: 12
+      amount: 1
+      slot: 135
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-cobblestone:
+      material: INFESTED_COBBLESTONE
+      name: "&fInfested Cobblestone"
+      price: 12
+      amount: 1
+      slot: 136
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-stone-bricks:
+      material: INFESTED_STONE_BRICKS
+      name: "&fInfested Stone Bricks"
+      price: 12
+      amount: 1
+      slot: 137
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-mossy-stone-bricks:
+      material: INFESTED_MOSSY_STONE_BRICKS
+      name: "&fInfested Mossy Stone Bricks"
+      price: 12
+      amount: 1
+      slot: 138
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-cracked-stone-bricks:
+      material: INFESTED_CRACKED_STONE_BRICKS
+      name: "&fInfested Cracked Stone Bricks"
+      price: 12
+      amount: 1
+      slot: 139
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-chiseled-stone-bricks:
+      material: INFESTED_CHISELED_STONE_BRICKS
+      name: "&fInfested Chiseled Stone Bricks"
+      price: 12
+      amount: 1
+      slot: 140
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    infested-deepslate:
+      material: INFESTED_DEEPSLATE
+      name: "&fInfested Deepslate"
+      price: 15
+      amount: 1
+      slot: 141
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+
+    spore-blossom:
+      material: SPORE_BLOSSOM
+      name: "&fSpore Blossom"
+      price: 15
+      amount: 1
+      slot: 142
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
