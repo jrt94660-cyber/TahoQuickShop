@@ -1,7 +1,7 @@
 title: "&8Shop - Nether"
 name: "&#0bf592Nether"
 material: MAGMA_BLOCK
-slot: 13
+slot: 12
 rows: 3
 items:
   blaze-rod:
