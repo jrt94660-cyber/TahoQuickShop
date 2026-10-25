@@ -278,7 +278,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         ItemMeta chosenMeta = chosen.getItemMeta();
         if (chosenMeta != null) {
             chosenMeta.setDisplayName(color(item.getString("name", parts[1])));
-            chosenMeta.setLore(List.of(color("&7Amount: &e" + amount), color("&7Total: &a$" + format(item.getDouble("price") * amount)), color("&8Use the buttons to change amount")));
+            chosenMeta.setLore(List.of(color("&7Amount: &e" + amount), color("&7Total: &a" + categoryPricePrefix(parts[0]) + format(item.getDouble("price") * amount)), color("&8Use the buttons to change amount")));
             chosen.setItemMeta(chosenMeta);
         }
         inventory.setItem(13, chosen);
@@ -288,6 +288,14 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         addActionItem(inventory, 18, Material.ARROW, "&cBack", "qty:back");
         addActionItem(inventory, 22, Material.EMERALD, "&aConfirm Purchase", "qty:confirm");
         player.openInventory(inventory);
+    }
+
+    private String categoryPricePrefix(String categoryId) {
+        ConfigurationSection category = getConfig().getConfigurationSection("categories." + categoryId);
+        if (category != null && category.getString("economy", "vault").equalsIgnoreCase("coinsengine")) {
+            return category.getString("currency-display", "Shards") + " ";
+        }
+        return "$";
     }
 
     private void addActionItem(Inventory inventory, int slot, Material material, String name, String action) {
@@ -327,18 +335,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             return;
         }
         String action = pdc.get(actionKey, PersistentDataType.STRING);
-        if (action != null) {
-            if (action.equals("back")) openMainShop(player);
-            else if (action.equals("next")) openCategory(player, holder.category, holder.page + 1);
-            else if (action.equals("previous")) openCategory(player, holder.category, Math.max(0, holder.page - 1));
-            return;
-        }
-        String itemRef = pdc.get(itemKey, PersistentDataType.STRING);
-        if (itemRef != null) {
-            openQuantitySelector(player, itemRef, 1);
-            return;
-        }
-        if (holder.selectionRef != null && action != null && action.startsWith("qty:")) {
+        if (action != null && action.startsWith("qty:") && holder.selectionRef != null) {
             int amount = holder.amount;
             if (action.startsWith("qty:add:")) amount += Integer.parseInt(action.substring("qty:add:".length()));
             else if (action.startsWith("qty:remove:")) amount -= Integer.parseInt(action.substring("qty:remove:".length()));
@@ -346,7 +343,16 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             else if (action.equals("qty:back")) { openCategory(player, holder.category, holder.page); return; }
             amount = Math.max(1, Math.min(64, amount));
             openQuantitySelector(player, holder.selectionRef, amount);
+            return;
         }
+        if (action != null) {
+            if (action.equals("back")) openMainShop(player);
+            else if (action.equals("next")) openCategory(player, holder.category, holder.page + 1);
+            else if (action.equals("previous")) openCategory(player, holder.category, Math.max(0, holder.page - 1));
+            return;
+        }
+        String itemRef = pdc.get(itemKey, PersistentDataType.STRING);
+        if (itemRef != null) openQuantitySelector(player, itemRef, 1);
     }
 
     private void purchase(Player player, String itemRef, int requestedAmount) {
