@@ -1623,7 +1623,7 @@ categories:
         price: 200
         amount: 1
         slot: 2
-        lore: ["&fBuy Price: &#a303f9$%price% Shards"]
+        lore: ["&fBuy Price: &#a303f9%price% Shards"]
         command: "crate givekey %player% common %amount%"
       prime-key:
         material: TRIPWIRE_HOOK
