@@ -232,9 +232,9 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         Inventory inventory = Bukkit.createInventory(new ShopHolder("main", 0), rows * 9,
                 color(getConfig().getString("settings.title", "&8Shop")));
         fill(inventory);
-        for (String id : categories.getKeys(false)) {
-            ConfigurationSection category = categories.getConfigurationSection(id);
-            if (category == null) continue;
+        for (Map.Entry<String, YamlConfiguration> categoryEntry : categoryConfigs.entrySet()) {
+            String id = categoryEntry.getKey();
+            ConfigurationSection category = categoryEntry.getValue();
             Material material = material(category.getString("material"), Material.CHEST);
             ItemStack icon = new ItemStack(material);
             ItemMeta meta = icon.getItemMeta();
