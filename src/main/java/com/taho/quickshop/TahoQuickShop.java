@@ -478,13 +478,13 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 return ((Number) apiType.getMethod("getBalance", Player.class, String.class).invoke(api, player, currency)).doubleValue();
             }
             if (provider.equals("coinsengine")) {
-                Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
-                boolean exists = (boolean) api.getMethod("hasCurrency", String.class).invoke(null, currency);
+                Class<?> coinsApi = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+                boolean exists = (boolean) coinsApi.getMethod("hasCurrency", String.class).invoke(null, currency);
                 if (!exists) {
                     getLogger().warning("CoinsEngine currency '" + currency + "' is not registered.");
                     return Double.NaN;
                 }
-                return ((Number) api.getMethod("getBalance", UUID.class, String.class).invoke(null, player.getUniqueId(), currency)).doubleValue();
+                return ((Number) coinsApi.getMethod("getBalance", UUID.class, String.class).invoke(null, player.getUniqueId(), currency)).doubleValue();
             }
             return Double.NaN;
         } catch (ReflectiveOperationException | LinkageError ex) {
@@ -510,9 +510,9 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 return result instanceof Boolean && (Boolean) result;
             }
             if (provider.equals("coinsengine")) {
-                Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+                Class<?> coinsApi = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
                 String methodName = amount < 0 ? "removeBalance" : "addBalance";
-                Object result = api.getMethod(methodName, UUID.class, String.class, double.class)
+                Object result = coinsApi.getMethod(methodName, UUID.class, String.class, double.class)
                         .invoke(null, player.getUniqueId(), currency, Math.abs(amount));
                 return result instanceof Boolean && (Boolean) result;
             }
