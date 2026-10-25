@@ -44,11 +44,24 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         setupEconomy();
         Bukkit.getPluginManager().registerEvents(this, this);
         if (getCommand("shop") != null) getCommand("shop").setExecutor(this);
+        if (getCommand("shardshop") != null) getCommand("shardshop").setExecutor(this);
         getLogger().info("TahoQuickShop enabled.");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("shardshop")) {
+            if (!(sender instanceof Player player)) {
+                sender.sendMessage("This command can only be used by a player.");
+                return true;
+            }
+            if (!player.hasPermission("tahoquickshop.use")) {
+                message(player, "no-permission");
+                return true;
+            }
+            openCategory(player, "shards", 0);
+            return true;
+        }
         if (!command.getName().equalsIgnoreCase("shop")) return false;
 
         if (args.length > 0) {
@@ -295,7 +308,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         if (category == null || item == null) return;
 
         double price = item.getDouble("price", -1);
-        int amount = Math.max(1, Math.min(64, item.getInt("amount", 1)));
+        int amount = Math.max(1, Math.min(64, item.getInt("amount", 1));
         if (price < 0 || !Double.isFinite(price)) { message(player, "purchase-failed"); return; }
 
         String provider = category.getString("economy", "vault").trim().toLowerCase(Locale.ROOT);
