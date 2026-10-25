@@ -5,7 +5,7 @@ purchase-success-message: "&aPurchased &e%amount%x %item% &afor &e%price% Shards
 title: "&8Shop - Shards"
 name: "&#0bf592Shards"
 material: AMETHYST_SHARD
-slot: 22
+slot: 15
 rows: 3
 items:
   common-key:
