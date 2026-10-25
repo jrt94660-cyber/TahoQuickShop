@@ -233,6 +233,300 @@ categories:
         amount: 1
         slot: 16
         lore: ["&fBuy Price: &#0bf52b$%price%"]
+  redstone:
+    title: "&8Shop - Redstone"
+    name: "&#ff3333Redstone"
+    material: REDSTONE
+    slot: 16
+    rows: 3
+    items:
+      redstone-dust:
+        material: REDSTONE
+        name: "&cRedstone Dust"
+        price: 8
+        amount: 1
+        slot: 0
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      redstone-block:
+        material: REDSTONE_BLOCK
+        name: "&cBlock of Redstone"
+        price: 72
+        amount: 1
+        slot: 1
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      redstone-torch:
+        material: REDSTONE_TORCH
+        name: "&cRedstone Torch"
+        price: 15
+        amount: 1
+        slot: 2
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      repeater:
+        material: REPEATER
+        name: "&fRedstone Repeater"
+        price: 35
+        amount: 1
+        slot: 3
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      comparator:
+        material: COMPARATOR
+        name: "&fRedstone Comparator"
+        price: 45
+        amount: 1
+        slot: 4
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      observer:
+        material: OBSERVER
+        name: "&fObserver"
+        price: 80
+        amount: 1
+        slot: 5
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      piston:
+        material: PISTON
+        name: "&fPiston"
+        price: 55
+        amount: 1
+        slot: 6
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      sticky-piston:
+        material: STICKY_PISTON
+        name: "&fSticky Piston"
+        price: 85
+        amount: 1
+        slot: 7
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      slime-block:
+        material: SLIME_BLOCK
+        name: "&aSlime Block"
+        price: 120
+        amount: 1
+        slot: 8
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      honey-block:
+        material: HONEY_BLOCK
+        name: "&6Honey Block"
+        price: 100
+        amount: 1
+        slot: 9
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      dispenser:
+        material: DISPENSER
+        name: "&fDispenser"
+        price: 65
+        amount: 1
+        slot: 10
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      dropper:
+        material: DROPPER
+        name: "&fDropper"
+        price: 55
+        amount: 1
+        slot: 11
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      hopper:
+        material: HOPPER
+        name: "&fHopper"
+        price: 90
+        amount: 1
+        slot: 12
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      redstone-lamp:
+        material: REDSTONE_LAMP
+        name: "&fRedstone Lamp"
+        price: 50
+        amount: 1
+        slot: 13
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      target:
+        material: TARGET
+        name: "&fTarget Block"
+        price: 65
+        amount: 1
+        slot: 14
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      daylight-detector:
+        material: DAYLIGHT_DETECTOR
+        name: "&fDaylight Detector"
+        price: 70
+        amount: 1
+        slot: 15
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      lever:
+        material: LEVER
+        name: "&fLever"
+        price: 12
+        amount: 1
+        slot: 16
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      tripwire-hook:
+        material: TRIPWIRE_HOOK
+        name: "&fTripwire Hook"
+        price: 18
+        amount: 1
+        slot: 17
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      string:
+        material: STRING
+        name: "&fString"
+        price: 5
+        amount: 1
+        slot: 18
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      note-block:
+        material: NOTE_BLOCK
+        name: "&fNote Block"
+        price: 45
+        amount: 1
+        slot: 19
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      tnt:
+        material: TNT
+        name: "&cTNT"
+        price: 100
+        amount: 1
+        slot: 20
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      trapped-chest:
+        material: TRAPPED_CHEST
+        name: "&fTrapped Chest"
+        price: 40
+        amount: 1
+        slot: 21
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      crafter:
+        material: CRAFTER
+        name: "&fCrafter"
+        price: 150
+        amount: 1
+        slot: 22
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      sculk-sensor:
+        material: SCULK_SENSOR
+        name: "&3Sculk Sensor"
+        price: 125
+        amount: 1
+        slot: 23
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      calibrated-sculk-sensor:
+        material: CALIBRATED_SCULK_SENSOR
+        name: "&3Calibrated Sculk Sensor"
+        price: 200
+        amount: 1
+        slot: 24
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      powered-rail:
+        material: POWERED_RAIL
+        name: "&fPowered Rail"
+        price: 45
+        amount: 1
+        slot: 25
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      detector-rail:
+        material: DETECTOR_RAIL
+        name: "&fDetector Rail"
+        price: 35
+        amount: 1
+        slot: 26
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      activator-rail:
+        material: ACTIVATOR_RAIL
+        name: "&fActivator Rail"
+        price: 40
+        amount: 1
+        slot: 27
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      rail:
+        material: RAIL
+        name: "&fRail"
+        price: 15
+        amount: 1
+        slot: 28
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      minecart:
+        material: MINECART
+        name: "&fMinecart"
+        price: 100
+        amount: 1
+        slot: 29
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      hopper-minecart:
+        material: HOPPER_MINECART
+        name: "&fMinecart with Hopper"
+        price: 180
+        amount: 1
+        slot: 30
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      tnt-minecart:
+        material: TNT_MINECART
+        name: "&cMinecart with TNT"
+        price: 200
+        amount: 1
+        slot: 31
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      chest-minecart:
+        material: CHEST_MINECART
+        name: "&fMinecart with Chest"
+        price: 140
+        amount: 1
+        slot: 32
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      furnace-minecart:
+        material: FURNACE_MINECART
+        name: "&fMinecart with Furnace"
+        price: 140
+        amount: 1
+        slot: 33
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      oak-button:
+        material: OAK_BUTTON
+        name: "&fOak Button"
+        price: 8
+        amount: 1
+        slot: 34
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      stone-button:
+        material: STONE_BUTTON
+        name: "&fStone Button"
+        price: 8
+        amount: 1
+        slot: 35
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      oak-pressure-plate:
+        material: OAK_PRESSURE_PLATE
+        name: "&fOak Pressure Plate"
+        price: 12
+        amount: 1
+        slot: 36
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      stone-pressure-plate:
+        material: STONE_PRESSURE_PLATE
+        name: "&fStone Pressure Plate"
+        price: 12
+        amount: 1
+        slot: 37
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      heavy-weighted-pressure-plate:
+        material: HEAVY_WEIGHTED_PRESSURE_PLATE
+        name: "&fHeavy Weighted Pressure Plate"
+        price: 25
+        amount: 1
+        slot: 38
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      light-weighted-pressure-plate:
+        material: LIGHT_WEIGHTED_PRESSURE_PLATE
+        name: "&fLight Weighted Pressure Plate"
+        price: 25
+        amount: 1
+        slot: 39
+        lore: ["&fBuy Price: &#0bf52b$%price%"]
+      redstone-wire-components:
+        material: COMPARATOR
+        name: "&fRedstone Components Bundle"
+        price: 250
+        amount: 1
+        slot: 40
+        lore: ["&7A handy bundle of redstone components", "&fBuy Price: &#0bf52b$%price%"]
   shards:
     title: "&8Shop - Shards"
     name: "&#0bf592Shards"
