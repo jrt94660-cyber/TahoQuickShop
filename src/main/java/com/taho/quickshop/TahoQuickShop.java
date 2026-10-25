@@ -5,6 +5,9 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -23,9 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.HashMap;
 
-public final class TahoQuickShop extends JavaPlugin implements Listener {
+public final class TahoQuickShop extends JavaPlugin implements Listener, CommandExecutor {
     private Economy economy;
     private NamespacedKey categoryKey;
     private NamespacedKey itemKey;
@@ -39,7 +41,19 @@ public final class TahoQuickShop extends JavaPlugin implements Listener {
         actionKey = new NamespacedKey(this, "shop_action");
         setupEconomy();
         Bukkit.getPluginManager().registerEvents(this, this);
-        getLogger().info("TahoQuickShop enabled. No commands are registered in this build.");
+        if (getCommand("shop") != null) getCommand("shop").setExecutor(this);
+        getLogger().info("TahoQuickShop enabled.");
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!command.getName().equalsIgnoreCase("shop")) return false;
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage("This command can only be used by a player.");
+            return true;
+        }
+        openMainShop(player);
+        return true;
     }
 
     private void setupEconomy() {
@@ -49,7 +63,6 @@ public final class TahoQuickShop extends JavaPlugin implements Listener {
         if (economy == null) getLogger().warning("Vault economy provider not found; purchases are disabled until one is available.");
     }
 
-    /** Public entry point for a future command or another plugin to open the shop. */
     public void openMainShop(Player player) {
         if (!player.hasPermission("tahoquickshop.use")) {
             message(player, "no-permission");
@@ -202,16 +215,16 @@ public final class TahoQuickShop extends JavaPlugin implements Listener {
                 rewardMeta.setDisplayName(color(item.getString("name", parts[1])));
                 reward.setItemMeta(rewardMeta);
             }
-            Map<Integer, ItemStack> leftover = player.getInventory().addItem(reward);
-            if (!leftover.isEmpty()) { message(player, "inventory-full"); return; }
+            if (player.getInventory().firstEmpty() == -1 && !canStack(player, reward)) { message(player, "inventory-full"); return; }
             var response = economy.withdrawPlayer(player, price);
-            if (!response.transactionSuccess()) {
-                player.getInventory().removeItem(reward);
-                message(player, "purchase-failed");
+            if (!response.transactionSuccess()) { message(player, "purchase-failed"); return; }
+            Map<Integer, ItemStack> leftover = player.getInventory().addItem(reward);
+            if (!leftover.isEmpty()) {
+                economy.depositPlayer(player, price);
+                message(player, "inventory-full");
                 return;
             }
         } else {
-            // Configured reward commands are dispatched only after the economy transaction succeeds.
             if (economy == null) { message(player, "economy-missing"); return; }
             if (economy.getBalance(player) + 1.0E-8 < price) { message(player, "not-enough"); return; }
             var response = economy.withdrawPlayer(player, price);
@@ -224,6 +237,14 @@ public final class TahoQuickShop extends JavaPlugin implements Listener {
         player.sendMessage(color(success.replace("%amount%", String.valueOf(amount))
                 .replace("%item%", stripColor(displayName)).replace("%price%", format(price))));
         if (getConfig().getBoolean("settings.purchase.close-after-purchase", false)) player.closeInventory();
+    }
+
+    private boolean canStack(Player player, ItemStack reward) {
+        for (ItemStack content : player.getInventory().getStorageContents()) {
+            if (content == null) return true;
+            if (content.isSimilar(reward) && content.getAmount() < content.getMaxStackSize()) return true;
+        }
+        return false;
     }
 
     private void message(Player player, String key) {
