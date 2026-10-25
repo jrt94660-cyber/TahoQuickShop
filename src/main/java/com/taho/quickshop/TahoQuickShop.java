@@ -48,6 +48,22 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("shop")) return false;
+
+        if (args.length > 0) {
+            if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+                if (!sender.hasPermission("tahoquickshop.admin")) {
+                    sender.sendMessage(color(getConfig().getString("settings.messages.no-permission", "&cYou don't have permission.")));
+                    return true;
+                }
+                reloadConfig();
+                setupEconomy();
+                sender.sendMessage(color("&aTahoQuickShop configuration reloaded."));
+                return true;
+            }
+            sender.sendMessage(color("&cUsage: /shop [reload]"));
+            return true;
+        }
+
         if (!(sender instanceof Player player)) {
             sender.sendMessage("This command can only be used by a player.");
             return true;
@@ -57,6 +73,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     }
 
     private void setupEconomy() {
+        economy = null;
         if (Bukkit.getPluginManager().getPlugin("Vault") == null) return;
         RegisteredServiceProvider<Economy> provider = getServer().getServicesManager().getRegistration(Economy.class);
         if (provider != null) economy = provider.getProvider();
