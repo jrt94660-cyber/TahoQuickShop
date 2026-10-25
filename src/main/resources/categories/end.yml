@@ -1,70 +1,69 @@
-end:
-  title: "&8Shop - End"
-  name: "&#0bf592End"
-  material: END_STONE
-  slot: 11
-  rows: 3
-  items:
-    ender-chest:
-      material: ENDER_CHEST
-      name: "&fEnder Chest"
-      price: 2500
-      amount: 1
-      slot: 9
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    ender-pearl:
-      material: ENDER_PEARL
-      name: "&fEnder Pearl"
-      price: 75
-      amount: 1
-      slot: 10
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    end-stone:
-      material: END_STONE
-      name: "&fEnd Stone"
-      price: 32
-      amount: 1
-      slot: 11
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    dragon-breath:
-      material: DRAGON_BREATH
-      name: "&eDragon's Breath"
-      price: 320
-      amount: 1
-      slot: 12
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    end-rod:
-      material: END_ROD
-      name: "&fEnd Rod"
-      price: 100
-      amount: 1
-      slot: 13
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    chorus-fruit:
-      material: CHORUS_FRUIT
-      name: "&fChorus Fruit"
-      price: 10
-      amount: 1
-      slot: 14
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    popped-chorus-fruit:
-      material: POPPED_CHORUS_FRUIT
-      name: "&fPopped Chorus Fruit"
-      price: 15
-      amount: 1
-      slot: 15
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    shulker-shell:
-      material: SHULKER_SHELL
-      name: "&fShulker Shell"
-      price: 350
-      amount: 1
-      slot: 16
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
-    shulker-box:
-      material: SHULKER_BOX
-      name: "&fShulker Box"
-      price: 800
-      amount: 1
-      slot: 17
-      lore: ["&fBuy Price: &#0bf52b$%price%"]
+title: "&8Shop - End"
+name: "&#0bf592End"
+material: END_STONE
+slot: 11
+rows: 3
+items:
+  ender-chest:
+    material: ENDER_CHEST
+    name: "&fEnder Chest"
+    price: 2500
+    amount: 1
+    slot: 9
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  ender-pearl:
+    material: ENDER_PEARL
+    name: "&fEnder Pearl"
+    price: 75
+    amount: 1
+    slot: 10
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  end-stone:
+    material: END_STONE
+    name: "&fEnd Stone"
+    price: 32
+    amount: 1
+    slot: 11
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  dragon-breath:
+    material: DRAGON_BREATH
+    name: "&eDragon's Breath"
+    price: 320
+    amount: 1
+    slot: 12
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  end-rod:
+    material: END_ROD
+    name: "&fEnd Rod"
+    price: 100
+    amount: 1
+    slot: 13
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  chorus-fruit:
+    material: CHORUS_FRUIT
+    name: "&fChorus Fruit"
+    price: 10
+    amount: 1
+    slot: 14
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  popped-chorus-fruit:
+    material: POPPED_CHORUS_FRUIT
+    name: "&fPopped Chorus Fruit"
+    price: 15
+    amount: 1
+    slot: 15
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  shulker-shell:
+    material: SHULKER_SHELL
+    name: "&fShulker Shell"
+    price: 350
+    amount: 1
+    slot: 16
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
+  shulker-box:
+    material: SHULKER_BOX
+    name: "&fShulker Box"
+    price: 800
+    amount: 1
+    slot: 17
+    lore: ["&fBuy Price: &#0bf52b$%price%"]
