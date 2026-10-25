@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,8 +23,11 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.UUID;
 import java.lang.reflect.Method;
@@ -34,10 +38,12 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private NamespacedKey categoryKey;
     private NamespacedKey itemKey;
     private NamespacedKey actionKey;
+    private final Map<String, YamlConfiguration> categoryConfigs = new LinkedHashMap<>();
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        loadCategories();
         categoryKey = new NamespacedKey(this, "category");
         itemKey = new NamespacedKey(this, "shop_item");
         actionKey = new NamespacedKey(this, "shop_action");
@@ -46,6 +52,53 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         if (getCommand("shop") != null) getCommand("shop").setExecutor(this);
         if (getCommand("shardshop") != null) getCommand("shardshop").setExecutor(this);
         getLogger().info("TahoQuickShop enabled.");
+    }
+
+    private void loadCategories() {
+        File directory = new File(getDataFolder(), "categories");
+        if (!directory.exists() && !directory.mkdirs()) {
+            getLogger().warning("Could not create categories directory.");
+            return;
+        }
+        for (String id : new String[]{"end", "nether", "gear", "food", "redstone", "overworld", "farms", "shards"}) {
+            File file = new File(directory, id + ".yml");
+            if (!file.exists()) {
+                try {
+                    saveResource("categories/" + id + ".yml", false);
+                } catch (IllegalArgumentException ex) {
+                    getLogger().warning("Missing bundled category resource: " + id + ".yml");
+                }
+            }
+        }
+        categoryConfigs.clear();
+        File[] files = directory.listFiles((dir, name) -> name.toLowerCase(Locale.ROOT).endsWith(".yml"));
+        if (files == null) return;
+        java.util.Arrays.sort(files, java.util.Comparator.comparing(File::getName));
+        for (File file : files) {
+            String name = file.getName();
+            String id = name.substring(0, name.length() - 4);
+            categoryConfigs.put(id, YamlConfiguration.loadConfiguration(file));
+        }
+    }
+
+    private ConfigurationSection getCategoryConfig(String id) {
+        return categoryConfigs.get(id);
+    }
+
+    private ConfigurationSection getItemConfig(String categoryId, String itemId) {
+        ConfigurationSection category = getCategoryConfig(categoryId);
+        return category == null ? null : category.getConfigurationSection("items." + itemId);
+    }
+
+    private void saveCategoryConfig(String categoryId) {
+        YamlConfiguration category = categoryConfigs.get(categoryId);
+        if (category == null) return;
+        File file = new File(new File(getDataFolder(), "categories"), categoryId + ".yml");
+        try {
+            category.save(file);
+        } catch (IOException ex) {
+            getLogger().severe("Could not save category " + categoryId + ": " + ex.getMessage());
+        }
     }
 
     @Override
@@ -71,6 +124,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                     return true;
                 }
                 reloadConfig();
+                loadCategories();
                 setupEconomy();
                 sender.sendMessage(color("&aTahoQuickShop configuration reloaded."));
                 return true;
@@ -104,7 +158,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void addHeldItem(Player player, String categoryId) {
         ConfigurationSection category = getCategoryConfig(categoryId);
         if (category == null) {
-            player.sendMessage(color("&cCategory '" + categoryId + "' doesn't exist. Use a category ID from config.yml."));
+            player.sendMessage(color("&cCategory '" + categoryId + "' doesn't exist. Use a category ID from plugins/TahoQuickShop/categories/."));
             return;
         }
 
@@ -130,24 +184,24 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             return;
         }
 
-        String path = "categories." + categoryId + ".items." + itemId;
+        String path = "items." + itemId;
         ItemMeta meta = held.getItemMeta();
         String displayName = meta != null && meta.hasDisplayName()
                 ? meta.getDisplayName() : prettyMaterialName(held.getType());
-        getConfig().set(path + ".material", held.getType().name());
-        getConfig().set(path + ".name", displayName);
-        getConfig().set(path + ".price", 0.0);
-        getConfig().set(path + ".amount", held.getAmount());
-        getConfig().set(path + ".slot", -1);
+        category.set(path + ".material", held.getType().name());
+        category.set(path + ".name", displayName);
+        category.set(path + ".price", 0.0);
+        category.set(path + ".amount", held.getAmount());
+        category.set(path + ".slot", -1);
         if (meta != null && meta.hasLore()) {
-            getConfig().set(path + ".lore", meta.getLore());
+            category.set(path + ".lore", meta.getLore());
         } else {
-            getConfig().set(path + ".lore", List.of("&7Price: &a$%price%"));
+            category.set(path + ".lore", List.of("&7Price: &a$%price%"));
         }
-        saveConfig();
+        saveCategoryConfig(categoryId);
 
         player.sendMessage(color("&aAdded &f" + displayName + " &ato category &e" + categoryId
-                + "&a as &e" + itemId + "&a. Its price is currently &e0&a; edit it in config.yml."));
+                + "&a as &e" + itemId + "&a. Its price is currently &e0&a; edit it in categories/" + categoryId + ".yml."));
     }
 
     private String prettyMaterialName(Material material) {
@@ -173,8 +227,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
             message(player, "no-permission");
             return;
         }
-        ConfigurationSection categories = getConfig().getConfigurationSection("categories");
-        if (categories == null) return;
+        if (categoryConfigs.isEmpty()) return;
         int rows = 3;
         Inventory inventory = Bukkit.createInventory(new ShopHolder("main", 0), rows * 9,
                 color(getConfig().getString("settings.title", "&8Shop")));
@@ -198,7 +251,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     }
 
     private void openCategory(Player player, String id, int page) {
-        ConfigurationSection category = getConfig().getConfigurationSection("categories." + id);
+        ConfigurationSection category = getCategoryConfig(id);
         if (category == null) { openMainShop(player); return; }
         int rows = 3;
         Inventory inventory = Bukkit.createInventory(new ShopHolder(id, page, null, 1), rows * 9,
@@ -310,7 +363,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     }
 
     private String categoryPricePrefix(String categoryId) {
-        ConfigurationSection category = getConfig().getConfigurationSection("categories." + categoryId);
+        ConfigurationSection category = getCategoryConfig(categoryId);
         if (category != null && (category.getString("economy", "vault").equalsIgnoreCase("coinsengine") || category.getString("economy", "vault").equalsIgnoreCase("excellenteconomy") || category.getString("economy", "vault").equalsIgnoreCase("excellent-economy"))) {
             return category.getString("currency-display", "Shards") + " ";
         }
@@ -378,8 +431,8 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
     private void purchase(Player player, String itemRef, int requestedAmount) {
         String[] parts = itemRef.split(":", 2);
         if (parts.length != 2) return;
-        ConfigurationSection category = getConfig().getConfigurationSection("categories." + parts[0]);
-        ConfigurationSection item = getConfig().getConfigurationSection("categories." + parts[0] + ".items." + parts[1]);
+        ConfigurationSection category = getCategoryConfig(parts[0]);
+        ConfigurationSection item = getItemConfig(parts[0], parts[1]);
         if (category == null || item == null) return;
 
         int amount = Math.max(1, Math.min(64, requestedAmount));
