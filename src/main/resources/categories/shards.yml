@@ -1,123 +1,122 @@
-shards:
-  economy: excellenteconomy
-  currency: shards
-  currency-display: "Shards"
-  purchase-success-message: "&aPurchased &e%amount%x %item% &afor &e%price% Shards&a."
-  title: "&8Shop - Shards"
-  name: "&#0bf592Shards"
-  material: AMETHYST_SHARD
-  slot: 15
-  rows: 3
-  items:
-    common-key:
-      material: TRIPWIRE_HOOK
-      name: "&#24981aCommon Key"
-      price: 200
-      amount: 1
-      slot: 2
-      lore: ["&fBuy Price: &#a303f9%price% Shards"]
-      command: "crate givekey %player% common %amount%"
-    prime-key:
-      material: TRIPWIRE_HOOK
-      name: "&#2386d3Prime Key"
-      price: 1500
-      amount: 1
-      slot: 3
-      lore: ["&fBuy Price: &#a303f9%price% Shards"]
-      command: "crate givekey %player% prime %amount%"
-    gold-key:
-      material: TRIPWIRE_HOOK
-      name: "&#e3b900Gold Key"
-      price: 1500
-      amount: 1
-      slot: 4
-      lore: ["&fBuy Price: &#a303f9%price% Shards"]
-      command: "crate givekey %player% gold %amount%"
-    amethyst-key:
-      material: TRIPWIRE_HOOK
-      name: "&#9966CCAmethyst Key"
-      price: 4000
-      amount: 1
-      slot: 5
-      lore: ["&fBuy Price: &#a303f9%price% Shards"]
-      command: "crate givekey %player% amethyst %amount%"
-    crimson-key:
-      material: TRIPWIRE_HOOK
-      name: "&#c42119Crimson Key"
-      price: 2000
-      amount: 1
-      slot: 6
-      lore: ["&fBuy Price: &#a303f9%price% Shards"]
-      command: "crate givekey %player% crimson %amount%"
-    pig-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 250
-      amount: 1
-      slot: 9
-      lore: ["&ePig", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% pig %amount%"
-    cow-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 350
-      amount: 1
-      slot: 10
-      lore: ["&eCow", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% cow %amount%"
-    zombie-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 400
-      amount: 1
-      slot: 11
-      lore: ["&eZombie", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% zombie %amount%"
-    spider-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 750
-      amount: 1
-      slot: 12
-      lore: ["&eSpider", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% spider %amount%"
-    skeleton-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 500
-      amount: 1
-      slot: 13
-      lore: ["&eSkeleton", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% skeleton %amount%"
-    creeper-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 625
-      amount: 1
-      slot: 14
-      lore: ["&eCreeper", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% creeper %amount%"
-    zombified-piglin-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 750
-      amount: 1
-      slot: 15
-      lore: ["&eZombified Piglin", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% zombie_piglin %amount%"
-    blaze-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 1000
-      amount: 1
-      slot: 16
-      lore: ["&eBlaze", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% blaze %amount%"
-    iron-golem-spawner:
-      material: SPAWNER
-      name: "&dSpawner"
-      price: 1500
-      amount: 1
-      slot: 17
-      lore: ["&eIron Golem", "&fBuy Price: &#a303f9%price% Shards"]
-      command: "ss give %player% iron_golem %amount%"
+economy: excellenteconomy
+currency: shards
+currency-display: "Shards"
+purchase-success-message: "&aPurchased &e%amount%x %item% &afor &e%price% Shards&a."
+title: "&8Shop - Shards"
+name: "&#0bf592Shards"
+material: AMETHYST_SHARD
+slot: 22
+rows: 3
+items:
+  common-key:
+    material: TRIPWIRE_HOOK
+    name: "&#24981aCommon Key"
+    price: 200
+    amount: 1
+    slot: 2
+    lore: ["&fBuy Price: &#a303f9%price% Shards"]
+    command: "crate givekey %player% common %amount%"
+  prime-key:
+    material: TRIPWIRE_HOOK
+    name: "&#2386d3Prime Key"
+    price: 1500
+    amount: 1
+    slot: 3
+    lore: ["&fBuy Price: &#a303f9%price% Shards"]
+    command: "crate givekey %player% prime %amount%"
+  gold-key:
+    material: TRIPWIRE_HOOK
+    name: "&#e3b900Gold Key"
+    price: 1500
+    amount: 1
+    slot: 4
+    lore: ["&fBuy Price: &#a303f9%price% Shards"]
+    command: "crate givekey %player% gold %amount%"
+  amethyst-key:
+    material: TRIPWIRE_HOOK
+    name: "&#9966CCAmethyst Key"
+    price: 4000
+    amount: 1
+    slot: 5
+    lore: ["&fBuy Price: &#a303f9%price% Shards"]
+    command: "crate givekey %player% amethyst %amount%"
+  crimson-key:
+    material: TRIPWIRE_HOOK
+    name: "&#c42119Crimson Key"
+    price: 2000
+    amount: 1
+    slot: 6
+    lore: ["&fBuy Price: &#a303f9%price% Shards"]
+    command: "crate givekey %player% crimson %amount%"
+  pig-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 250
+    amount: 1
+    slot: 9
+    lore: ["&ePig", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% pig %amount%"
+  cow-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 350
+    amount: 1
+    slot: 10
+    lore: ["&eCow", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% cow %amount%"
+  zombie-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 400
+    amount: 1
+    slot: 11
+    lore: ["&eZombie", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% zombie %amount%"
+  spider-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 750
+    amount: 1
+    slot: 12
+    lore: ["&eSpider", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% spider %amount%"
+  skeleton-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 500
+    amount: 1
+    slot: 13
+    lore: ["&eSkeleton", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% skeleton %amount%"
+  creeper-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 625
+    amount: 1
+    slot: 14
+    lore: ["&eCreeper", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% creeper %amount%"
+  zombified-piglin-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 750
+    amount: 1
+    slot: 15
+    lore: ["&eZombified Piglin", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% zombie_piglin %amount%"
+  blaze-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 1000
+    amount: 1
+    slot: 16
+    lore: ["&eBlaze", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% blaze %amount%"
+  iron-golem-spawner:
+    material: SPAWNER
+    name: "&dSpawner"
+    price: 1500
+    amount: 1
+    slot: 17
+    lore: ["&eIron Golem", "&fBuy Price: &#a303f9%price% Shards"]
+    command: "ss give %player% iron_golem %amount%"
