@@ -5,9 +5,14 @@ api-version: '1.21'
 author: Taho
 description: Configurable GUI shop plugin with Vault economy support.
 softdepend: [Vault, PlayerPoints, ExcellentEconomy]
+commands:
+  shop:
+    description: Opens the TahoQuickShop GUI.
+    usage: /shop
+    permission: tahoquickshop.use
 permissions:
   tahoquickshop.use:
-    description: Allows using the shop when an opening method is configured.
+    description: Allows opening the shop GUI.
     default: true
   tahoquickshop.admin:
     description: Allows shop administration features.
