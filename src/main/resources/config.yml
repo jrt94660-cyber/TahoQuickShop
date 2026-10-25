@@ -1607,7 +1607,7 @@ categories:
         slot: 142
         lore: ["&fBuy Price: &#0bf52b$%price%"]
   shards:
-    economy: coinsengine
+    economy: excellenteconomy
     currency: shards
     currency-display: "Shards"
     purchase-success-message: "&aPurchased &e%amount%x %item% &afor &e%price% Shards&a."
