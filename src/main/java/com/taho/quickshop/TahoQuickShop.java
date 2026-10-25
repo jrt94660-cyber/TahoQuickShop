@@ -60,7 +60,21 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
                 sender.sendMessage(color("&aTahoQuickShop configuration reloaded."));
                 return true;
             }
-            sender.sendMessage(color("&cUsage: /shop [reload]"));
+
+            if (args.length == 2 && args[0].equalsIgnoreCase("add")) {
+                if (!sender.hasPermission("tahoquickshop.admin")) {
+                    sender.sendMessage(color(getConfig().getString("settings.messages.no-permission", "&cYou don't have permission.")));
+                    return true;
+                }
+                if (!(sender instanceof Player player)) {
+                    sender.sendMessage(color("&cOnly players can add an item from their hand."));
+                    return true;
+                }
+                addHeldItem(player, args[1]);
+                return true;
+            }
+
+            sender.sendMessage(color("&cUsage: /shop | /shop reload | /shop add <category>"));
             return true;
         }
 
@@ -70,6 +84,65 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         }
         openMainShop(player);
         return true;
+    }
+
+    private void addHeldItem(Player player, String categoryId) {
+        ConfigurationSection category = getConfig().getConfigurationSection("categories." + categoryId);
+        if (category == null) {
+            player.sendMessage(color("&cCategory '" + categoryId + "' doesn't exist. Use a category ID from config.yml."));
+            return;
+        }
+
+        ItemStack held = player.getInventory().getItemInMainHand();
+        if (held == null || held.getType().isAir()) {
+            player.sendMessage(color("&cHold the item you want to add in your main hand."));
+            return;
+        }
+
+        String baseKey = held.getType().name().toLowerCase(Locale.ROOT).replace('_', '-');
+        ConfigurationSection items = category.getConfigurationSection("items");
+        if (items == null) {
+            category.createSection("items");
+            items = category.getConfigurationSection("items");
+        }
+        String itemId = baseKey;
+        int suffix = 2;
+        while (items != null && items.contains(itemId)) {
+            itemId = baseKey + "-" + suffix++;
+        }
+        if (items == null) {
+            player.sendMessage(color("&cCouldn't access this category's items section."));
+            return;
+        }
+
+        String path = "categories." + categoryId + ".items." + itemId;
+        ItemMeta meta = held.getItemMeta();
+        String displayName = meta != null && meta.hasDisplayName()
+                ? meta.getDisplayName() : prettyMaterialName(held.getType());
+        getConfig().set(path + ".material", held.getType().name());
+        getConfig().set(path + ".name", displayName);
+        getConfig().set(path + ".price", 0.0);
+        getConfig().set(path + ".amount", held.getAmount());
+        getConfig().set(path + ".slot", -1);
+        if (meta != null && meta.hasLore()) {
+            getConfig().set(path + ".lore", meta.getLore());
+        } else {
+            getConfig().set(path + ".lore", List.of("&7Price: &a$%price%"));
+        }
+        saveConfig();
+
+        player.sendMessage(color("&aAdded &f" + displayName + " &ato category &e" + categoryId
+                + "&a as &e" + itemId + "&a. Its price is currently &e0&a; edit it in config.yml."));
+    }
+
+    private String prettyMaterialName(Material material) {
+        String[] words = material.name().toLowerCase(Locale.ROOT).split("_");
+        StringBuilder name = new StringBuilder();
+        for (String word : words) {
+            if (name.length() > 0) name.append(' ');
+            name.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+        }
+        return "&f" + name;
     }
 
     private void setupEconomy() {
