@@ -1,7 +1,7 @@
 title: "&8Shop - Gear"
 name: "&#0bf592Gear"
 material: TOTEM_OF_UNDYING
-slot: 15
+slot: 13
 rows: 3
 items:
   obsidian:
