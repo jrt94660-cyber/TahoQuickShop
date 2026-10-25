@@ -1,0 +1,14 @@
+name: TahoQuickShop
+version: 1.0.0
+main: com.taho.quickshop.TahoQuickShop
+api-version: '1.21'
+author: Taho
+description: Configurable GUI shop plugin with Vault economy support.
+softdepend: [Vault, PlayerPoints, ExcellentEconomy]
+permissions:
+  tahoquickshop.use:
+    description: Allows using the shop when an opening method is configured.
+    default: true
+  tahoquickshop.admin:
+    description: Allows shop administration features.
+    default: op
