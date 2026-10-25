@@ -271,10 +271,12 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         if (item == null) return;
         Inventory inventory = Bukkit.createInventory(new ShopHolder(parts[0], 0, itemRef, amount), 27, color("&8Select Amount"));
         fill(inventory);
-        addActionItem(inventory, 9, Material.RED_CONCRETE, "&c-64", "qty:remove:64");
+        Material itemMaterial = material(item.getString("material"), Material.STONE);
+        int largeStep = itemMaterial.getMaxStackSize() <= 16 ? 16 : 64;
+        addActionItem(inventory, 9, Material.RED_CONCRETE, "&c-" + largeStep, "qty:remove:" + largeStep);
         addActionItem(inventory, 10, Material.RED_CONCRETE, "&c-10", "qty:remove:10");
         addActionItem(inventory, 11, Material.RED_CONCRETE, "&c-1", "qty:remove:1");
-        ItemStack chosen = new ItemStack(material(item.getString("material"), Material.STONE), 1);
+        ItemStack chosen = new ItemStack(itemMaterial, 1);
         ItemMeta chosenMeta = chosen.getItemMeta();
         if (chosenMeta != null) {
             chosenMeta.setDisplayName(color(item.getString("name", parts[1])));
@@ -284,7 +286,7 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         inventory.setItem(13, chosen);
         addActionItem(inventory, 15, Material.LIME_CONCRETE, "&a+1", "qty:add:1");
         addActionItem(inventory, 16, Material.LIME_CONCRETE, "&a+10", "qty:add:10");
-        addActionItem(inventory, 17, Material.LIME_CONCRETE, "&a+64", "qty:add:64");
+        addActionItem(inventory, 17, Material.LIME_CONCRETE, "&a+" + largeStep, "qty:add:" + largeStep);
         addActionItem(inventory, 18, Material.ARROW, "&cBack", "qty:back");
         addActionItem(inventory, 22, Material.EMERALD, "&aConfirm Purchase", "qty:confirm");
         player.openInventory(inventory);
@@ -431,41 +433,74 @@ public final class TahoQuickShop extends JavaPlugin implements Listener, Command
         if (getConfig().getBoolean("settings.purchase.close-after-purchase", false)) player.closeInventory();
     }
 
+    private boolean isCustomCurrencyProvider(String provider) {
+        return provider.equals("coinsengine") || provider.equals("excellenteconomy") || provider.equals("excellent-economy");
+    }
+
+    private Object excellentEconomyApi() throws ReflectiveOperationException {
+        org.bukkit.plugin.Plugin plugin = Bukkit.getPluginManager().getPlugin("ExcellentEconomy");
+        if (plugin == null || !plugin.isEnabled()) return null;
+        return plugin.getClass().getMethod("getAPI").invoke(plugin);
+    }
+
     private double readBalance(Player player, String provider, String currency) {
-        if (!provider.equals("coinsengine")) {
+        if (!isCustomCurrencyProvider(provider)) {
             return economy == null ? Double.NaN : economy.getBalance(player);
         }
         if (currency.isEmpty()) return Double.NaN;
         try {
-            Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
-            boolean exists = (boolean) api.getMethod("hasCurrency", String.class).invoke(null, currency);
-            if (!exists) {
-                getLogger().warning("CoinsEngine currency '" + currency + "' is not registered. Check the currency file name in plugins/CoinsEngine.");
-                return Double.NaN;
+            Object api = excellentEconomyApi();
+            if (api != null) {
+                Class<?> apiType = Class.forName("su.nightexpress.excellenteconomy.api.ExcellentEconomyAPI");
+                boolean exists = (boolean) apiType.getMethod("hasCurrency", String.class).invoke(api, currency);
+                if (!exists) {
+                    getLogger().warning("ExcellentEconomy currency '" + currency + "' is not registered. Check its exact ID in the ExcellentEconomy currency configuration.");
+                    return Double.NaN;
+                }
+                return ((Number) apiType.getMethod("getBalance", Player.class, String.class).invoke(api, player, currency)).doubleValue();
             }
-            return ((Number) api.getMethod("getBalance", UUID.class, String.class)
-                    .invoke(null, player.getUniqueId(), currency)).doubleValue();
+            if (provider.equals("coinsengine")) {
+                Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+                boolean exists = (boolean) api.getMethod("hasCurrency", String.class).invoke(null, currency);
+                if (!exists) {
+                    getLogger().warning("CoinsEngine currency '" + currency + "' is not registered.");
+                    return Double.NaN;
+                }
+                return ((Number) api.getMethod("getBalance", UUID.class, String.class).invoke(null, player.getUniqueId(), currency)).doubleValue();
+            }
+            return Double.NaN;
         } catch (ReflectiveOperationException | LinkageError ex) {
-            getLogger().warning("Could not access CoinsEngine currency '" + currency + "': " + ex.getMessage());
+            getLogger().warning("Could not access " + provider + " currency '" + currency + "': " + ex.getMessage());
             return Double.NaN;
         }
     }
 
     private boolean changeBalance(Player player, String provider, String currency, double amount) {
-        if (!provider.equals("coinsengine")) {
+        if (!isCustomCurrencyProvider(provider)) {
             if (economy == null) return false;
             if (amount < 0) return economy.withdrawPlayer(player, -amount).transactionSuccess();
             return economy.depositPlayer(player, amount).transactionSuccess();
         }
         if (currency.isEmpty()) return false;
         try {
-            Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
-            String methodName = amount < 0 ? "removeBalance" : "addBalance";
-            Method method = api.getMethod(methodName, UUID.class, String.class, double.class);
-            Object result = method.invoke(null, player.getUniqueId(), currency, Math.abs(amount));
-            return result instanceof Boolean && (Boolean) result;
+            Object api = excellentEconomyApi();
+            if (api != null) {
+                Class<?> apiType = Class.forName("su.nightexpress.excellenteconomy.api.ExcellentEconomyAPI");
+                String methodName = amount < 0 ? "withdraw" : "deposit";
+                Object result = apiType.getMethod(methodName, Player.class, String.class, double.class)
+                        .invoke(api, player, currency, Math.abs(amount));
+                return result instanceof Boolean && (Boolean) result;
+            }
+            if (provider.equals("coinsengine")) {
+                Class<?> api = Class.forName("su.nightexpress.coinsengine.api.CoinsEngineAPI");
+                String methodName = amount < 0 ? "removeBalance" : "addBalance";
+                Object result = api.getMethod(methodName, UUID.class, String.class, double.class)
+                        .invoke(null, player.getUniqueId(), currency, Math.abs(amount));
+                return result instanceof Boolean && (Boolean) result;
+            }
+            return false;
         } catch (ReflectiveOperationException | LinkageError ex) {
-            getLogger().warning("Could not change CoinsEngine currency '" + currency + "': " + ex.getMessage());
+            getLogger().warning("Could not change " + provider + " currency '" + currency + "': " + ex.getMessage());
             return false;
         }
     }
