@@ -6,6 +6,9 @@ author: Taho
 description: Configurable GUI shop plugin with Vault economy support.
 softdepend: [Vault, CoinsEngine, PlayerPoints, ExcellentEconomy]
 commands:
+  shardshop:
+    description: Opens the Shards category directly.
+    usage: /shardshop
   shop:
     description: Opens the TahoQuickShop GUI.
     usage: /shop | /shop reload | /shop add <category>
