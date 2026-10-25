@@ -1,0 +1,70 @@
+food:
+  title: "&8Shop - Food"
+  name: "&#0bf592Food"
+  material: COOKED_BEEF
+  slot: 14
+  rows: 3
+  items:
+    potato:
+      material: POTATO
+      name: "&fPotato"
+      price: 25
+      amount: 1
+      slot: 9
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    sweet-berries:
+      material: SWEET_BERRIES
+      name: "&fSweet Berries"
+      price: 15
+      amount: 1
+      slot: 10
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    melon-slice:
+      material: MELON_SLICE
+      name: "&fMelon Slice"
+      price: 10
+      amount: 1
+      slot: 11
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    carrot:
+      material: CARROT
+      name: "&fCarrot"
+      price: 25
+      amount: 1
+      slot: 12
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    apple:
+      material: APPLE
+      name: "&fApple"
+      price: 25
+      amount: 1
+      slot: 13
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    cooked-chicken:
+      material: COOKED_CHICKEN
+      name: "&fCooked Chicken"
+      price: 30
+      amount: 1
+      slot: 14
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    steak:
+      material: COOKED_BEEF
+      name: "&fSteak"
+      price: 35
+      amount: 1
+      slot: 15
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    golden-carrot:
+      material: GOLDEN_CARROT
+      name: "&fGolden Carrot"
+      price: 65
+      amount: 1
+      slot: 16
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
+    food-golden-apple:
+      material: GOLDEN_APPLE
+      name: "&fGolden Apple"
+      price: 250
+      amount: 1
+      slot: 17
+      lore: ["&fBuy Price: &#0bf52b$%price%"]
